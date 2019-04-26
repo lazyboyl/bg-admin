@@ -71,7 +71,9 @@
       loginSystem() {
         this.$refs['loginForm'].validate((valid) => {
           if (valid) {
-            console.log('实现用户登录')
+            this.$router.push({
+              name: 'main'
+            })
           }
         })
       },
