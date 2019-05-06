@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.bg.admin.core.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.github.bg.admin.core.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="userId" jdbcType="VARCHAR" property="userId" />
+    <result column="loginAccount" jdbcType="VARCHAR" property="loginAccount" />
+    <result column="loginPassword" jdbcType="VARCHAR" property="loginPassword" />
+    <result column="crtDate" jdbcType="TIMESTAMP" property="crtDate" />
+    <result column="nickName" jdbcType="VARCHAR" property="nickName" />
+    <result column="lastLoginDate" jdbcType="TIMESTAMP" property="lastLoginDate" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="headImg" jdbcType="VARCHAR" property="headImg" />
+  </resultMap>
+</mapper>

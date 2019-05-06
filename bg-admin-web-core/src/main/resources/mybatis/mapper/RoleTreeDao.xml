@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.bg.admin.core.dao.RoleTreeDao">
+  <resultMap id="BaseResultMap" type="com.github.bg.admin.core.entity.RoleTree">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="roleTreeId" jdbcType="VARCHAR" property="roleTreeId" />
+    <result column="roleId" jdbcType="VARCHAR" property="roleId" />
+    <result column="treeId" jdbcType="INTEGER" property="treeId" />
+  </resultMap>
+</mapper>

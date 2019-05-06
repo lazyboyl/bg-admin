@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.bg.admin.core.dao.UserRoleDao">
+  <resultMap id="BaseResultMap" type="com.github.bg.admin.core.entity.UserRole">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="userRoleId" jdbcType="VARCHAR" property="userRoleId" />
+    <result column="userId" jdbcType="VARCHAR" property="userId" />
+    <result column="roleId" jdbcType="VARCHAR" property="roleId" />
+  </resultMap>
+</mapper>

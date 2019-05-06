@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.bg.admin.core.dao.TreeDao">
+  <resultMap id="BaseResultMap" type="com.github.bg.admin.core.entity.Tree">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="treeId" jdbcType="INTEGER" property="treeId" />
+    <result column="treeName" jdbcType="VARCHAR" property="treeName" />
+    <result column="treeCode" jdbcType="VARCHAR" property="treeCode" />
+    <result column="treeState" jdbcType="VARCHAR" property="treeState" />
+    <result column="treeType" jdbcType="VARCHAR" property="treeType" />
+    <result column="parentTreeId" jdbcType="INTEGER" property="parentTreeId" />
+    <result column="parentTreeName" jdbcType="VARCHAR" property="parentTreeName" />
+    <result column="crtDate" jdbcType="TIMESTAMP" property="crtDate" />
+    <result column="fullPath" jdbcType="VARCHAR" property="fullPath" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,38 @@
+server:
+  port: 8288
+
+# 配置日志信息
+logging:
+  level:
+    root: INFO
+    com.github.bg.admin.core: DEBUG
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/vcm?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+
+swagger:
+  title: 用户权限架构的接口测试中心
+  description: 用户权限架构的接口测试专用API文档
+  base-package: com.github.bg.admin.core.controller
+  contact:
+    name: 林泽锋
+    email: 282245889@qq.com

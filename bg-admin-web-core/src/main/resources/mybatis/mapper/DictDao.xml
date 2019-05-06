@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.bg.admin.core.dao.DictDao">
+  <resultMap id="BaseResultMap" type="com.github.bg.admin.core.entity.Dict">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="dictType" jdbcType="VARCHAR" property="dictType" />
+    <result column="dictCode" jdbcType="VARCHAR" property="dictCode" />
+    <result column="dictText" jdbcType="VARCHAR" property="dictText" />
+    <result column="dictValue" jdbcType="VARCHAR" property="dictValue" />
+  </resultMap>
+</mapper>

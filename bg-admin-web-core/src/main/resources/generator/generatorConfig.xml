@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <!-- 是否区分大小写，默认值 false -->
+            <property name="caseSensitive" value="true"/>
+            <!-- 是否强制生成注解，默认 false，如果设置为 true，不管数据库名和字段名是否一致，都会生成注解（包含 @Table 和 @Column） -->
+            <property name="forceAnnotation" value="true"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/vcm?characterEncoding=utf-8"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.github.bg.admin.core.entity" targetProject="src/main/java">
+
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybatis/mapper" targetProject="src/main/resources" />
+
+        <javaClientGenerator targetPackage="com.github.bg.admin.core.dao" targetProject="src/main/java"  type="XMLMAPPER"/>
+
+        <table tableName="t_user" domainObjectName="User" mapperName="UserDao">
+            <!-- 字段属性是否驼峰展示，true为驼峰展示 -->
+            <property name="useActualColumnNames" value="true"></property>
+            <generatedKey column="userId" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="t_role" domainObjectName="Role" mapperName="RoleDao">
+            <!-- 字段属性是否驼峰展示，true为驼峰展示 -->
+            <property name="useActualColumnNames" value="true"></property>
+            <generatedKey column="roleId" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="t_org" domainObjectName="Org" mapperName="OrgeDao">
+            <!-- 字段属性是否驼峰展示，true为驼峰展示 -->
+            <property name="useActualColumnNames" value="true"></property>
+            <generatedKey column="orgId" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="t_behavior_log" domainObjectName="BehaviorLog" mapperName="BehaviorLogDao">
+            <!-- 字段属性是否驼峰展示，true为驼峰展示 -->
+            <property name="useActualColumnNames" value="true"></property>
+            <generatedKey column="behaviorLogId" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="t_dict" domainObjectName="Dict" mapperName="DictDao">
+            <!-- 字段属性是否驼峰展示，true为驼峰展示 -->
+            <property name="useActualColumnNames" value="true"></property>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="t_tree" domainObjectName="Tree" mapperName="TreeDao">
+            <!-- 字段属性是否驼峰展示，true为驼峰展示 -->
+            <property name="useActualColumnNames" value="true"></property>
+            <generatedKey column="treeId" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="t_role_tree" domainObjectName="RoleTree" mapperName="RoleTreeDao">
+            <!-- 字段属性是否驼峰展示，true为驼峰展示 -->
+            <property name="useActualColumnNames" value="true"></property>
+            <generatedKey column="roleTreeId" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="t_user_org" domainObjectName="UserOrg" mapperName="UserOrgDao">
+            <!-- 字段属性是否驼峰展示，true为驼峰展示 -->
+            <property name="useActualColumnNames" value="true"></property>
+            <generatedKey column="userOrgId" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="t_user_role" domainObjectName="UserRole" mapperName="UserRoleDao">
+            <!-- 字段属性是否驼峰展示，true为驼峰展示 -->
+            <property name="useActualColumnNames" value="true"></property>
+            <generatedKey column="userRoleId" sqlStatement="JDBC"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

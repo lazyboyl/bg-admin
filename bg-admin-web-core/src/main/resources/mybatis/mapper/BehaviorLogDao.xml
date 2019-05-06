@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.bg.admin.core.dao.BehaviorLogDao">
+  <resultMap id="BaseResultMap" type="com.github.bg.admin.core.entity.BehaviorLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="behaviorLogId" jdbcType="BIGINT" property="behaviorLogId" />
+    <result column="actionMethod" jdbcType="VARCHAR" property="actionMethod" />
+    <result column="actionDate" jdbcType="TIMESTAMP" property="actionDate" />
+    <result column="actionUser" jdbcType="VARCHAR" property="actionUser" />
+    <result column="actionUserId" jdbcType="VARCHAR" property="actionUserId" />
+  </resultMap>
+</mapper>
