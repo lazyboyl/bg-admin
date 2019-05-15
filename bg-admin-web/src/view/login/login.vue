@@ -43,6 +43,7 @@
 </template>
 <script>
   import Language from '../../components/language';
+  import { login } from '../../api/sys/user/user.api';
 
   export default {
     components: {
@@ -71,9 +72,16 @@
       loginSystem() {
         this.$refs['loginForm'].validate((valid) => {
           if (valid) {
-            this.$router.push({
-              name: 'main'
+            login(this.loginForm).then(res=>{
+              if(res.code==200){
+                this.$router.push({
+                  name: 'main'
+                })
+              }else{
+                this.$Message.error('账号密码错误！');
+              }
             })
+
           }
         })
       },

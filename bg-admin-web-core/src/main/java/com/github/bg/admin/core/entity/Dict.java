@@ -9,7 +9,7 @@ public class Dict {
      */
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "JDBC")
+
     private String id;
 
     /**
