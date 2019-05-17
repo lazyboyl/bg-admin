@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import {Message} from 'iview';
+import config from '../config/run.config';
 
 class httpRequest {
 
@@ -49,8 +50,8 @@ class httpRequest {
   // 创建实例
   create() {
     let conf = {
-      // 远程请求的服务的地址
-      baseURL: "http://127.0.0.1:8288",
+      // 远程请求的服务的地址，动态获取，此处为第七章改造的关键点
+      baseURL: config.runConfig.baseUrl,
       // 超时时间
       timeout: 5000,
       headers: {
