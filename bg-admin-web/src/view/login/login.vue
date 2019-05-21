@@ -74,6 +74,7 @@
           if (valid) {
             login(this.loginForm).then(res=>{
               if(res.code==200){
+                console.log('----'+JSON.stringify(res))
                 this.$router.push({
                   name: 'main'
                 })

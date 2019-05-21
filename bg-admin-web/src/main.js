@@ -7,6 +7,14 @@ import router from './router'
 import i18n from './local'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import runConfig from './config/run.config';
+
+/**
+ * 表示当前的应用启动的时候是以mock的方式启动
+ */
+if(runConfig.runConfig.mock){
+  require('./config/mock/mock.js')
+}
 
 Vue.config.productionTip = false
 // 引入view的国际化

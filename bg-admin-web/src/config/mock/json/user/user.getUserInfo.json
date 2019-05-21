@@ -1,0 +1,23 @@
+{
+  "code": 200,
+  "msg": "登陆成功",
+  "obj": {
+    "loginAccount": "admin",
+    "access": [
+      "system-manage-role",
+      "system-manage-dict-add",
+      "system-manage-tree",
+      "system-manage-dict",
+      "system-manage-behavior",
+      "system-manage",
+      "system-manage-user"
+    ],
+    "headImg": null,
+    "nickName": "系统管理员",
+    "crtDate": 1557470735000,
+    "loginPassword": null,
+    "lastLoginDate": 1557470743000,
+    "userId": "1",
+    "token": "28a6b0bd2c3c4fa3a52335ad6d9aafb2"
+  }
+}
