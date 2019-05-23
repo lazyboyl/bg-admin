@@ -1,0 +1,11 @@
+{
+  "code": 200,
+  "msg": "增加加角色成功",
+  "obj": {
+    "roleId": "7cec34e6305e427b8fc2938c62ab67ba",
+    "roleName": "31231",
+    "roleCode": "1231",
+    "crtDate": "2019-05-22T03:31:50.237+0000",
+    "roleTrees": "[{\"treeId\":1,\"title\":\"系统管理\",\"treeCode\":\"system-manage\",\"treeState\":\"1\",\"treeType\":\"1\",\"parentTreeId\":0,\"parentTreeName\":null,\"expand\":true,\"checked\":true,\"children\":[{\"treeId\":2,\"title\":\"字典管理\",\"treeCode\":\"system-manage-dict\",\"treeState\":\"1\",\"treeType\":\"1\",\"parentTreeId\":1,\"parentTreeName\":\"系统管理\",\"expand\":true,\"checked\":true,\"children\":[{\"treeId\":3,\"title\":\"增加字典\",\"treeCode\":\"system-manage-dict-add\",\"treeState\":\"1\",\"treeType\":\"2\",\"parentTreeId\":2,\"parentTreeName\":\"字典管理\",\"expand\":true,\"checked\":true,\"children\":[],\"nodeKey\":2,\"indeterminate\":false}],\"nodeKey\":1,\"indeterminate\":false},{\"treeId\":4,\"title\":\"角色管理\",\"treeCode\":\"system-manage-role\",\"treeState\":\"1\",\"treeType\":\"1\",\"parentTreeId\":1,\"parentTreeName\":\"系统管理\",\"expand\":true,\"checked\":true,\"children\":[],\"nodeKey\":3,\"indeterminate\":false},{\"treeId\":13,\"title\":\"菜单管理\",\"treeCode\":\"system-manage-tree\",\"treeState\":\"1\",\"treeType\":\"1\",\"parentTreeId\":1,\"parentTreeName\":\"系统管理\",\"expand\":true,\"checked\":true,\"children\":[],\"nodeKey\":4,\"indeterminate\":false},{\"treeId\":14,\"title\":\"用户组织\",\"treeCode\":\"system-manage-user\",\"treeState\":\"1\",\"treeType\":\"1\",\"parentTreeId\":1,\"parentTreeName\":\"系统管理\",\"expand\":true,\"checked\":true,\"children\":[],\"nodeKey\":5,\"indeterminate\":false},{\"treeId\":15,\"title\":\"行为日志\",\"treeCode\":\"system-manage-behavior\",\"treeState\":\"1\",\"treeType\":\"1\",\"parentTreeId\":1,\"parentTreeName\":\"系统管理\",\"expand\":true,\"checked\":true,\"children\":[],\"nodeKey\":6,\"indeterminate\":false}],\"nodeKey\":0,\"indeterminate\":false}]"
+  }
+}

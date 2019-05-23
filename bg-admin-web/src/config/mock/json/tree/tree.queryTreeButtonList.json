@@ -1,0 +1,22 @@
+{
+  "code": 200,
+  "msg": "获取按钮列表数据成功！",
+  "obj": {
+    "pageSize": 10,
+    "current": 1,
+    "total": 1,
+    "rows": [
+      {
+        "treeId": 3,
+        "treeName": "增加字典",
+        "treeCode": "system-manage-dict-add",
+        "treeState": "1",
+        "treeType": "2",
+        "parentTreeId": 2,
+        "parentTreeName": "字典管理",
+        "crtDate": "2019-05-05T09:22:59.000+0000",
+        "fullPath": "1.2.3"
+      }
+    ]
+  }
+}

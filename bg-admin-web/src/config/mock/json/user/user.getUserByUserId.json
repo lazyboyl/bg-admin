@@ -1,0 +1,22 @@
+{
+  "code": 200,
+  "msg": "加载用户信息成功",
+  "obj": {
+    "loginAccount": "linzf1",
+    "headImg": "",
+    "orgIds": [
+      "1",
+      "4"
+    ],
+    "nickName": "好的撒开奖号",
+    "crtDate": 1558515869000,
+    "roles": [
+      "1",
+      "615b36a78e414e2d9a69614ecca08306"
+    ],
+    "loginPassword": "123456",
+    "lastLoginDate": null,
+    "userId": "fba69228bc994ebfa275c84eeef95122",
+    "token": null
+  }
+}

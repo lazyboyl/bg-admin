@@ -1,0 +1,13 @@
+{
+  "code": 200,
+  "msg": "获取组织架构数据成功",
+  "obj": {
+    "orgId": 3,
+    "orgName": "研发一组",
+    "orgCode": "xx-12",
+    "parentOrgId": 2,
+    "parentOrgName": "研发一部",
+    "crtDate": "2019-05-10T06:42:23.000+0000",
+    "fullPath": "1.2.3"
+  }
+}

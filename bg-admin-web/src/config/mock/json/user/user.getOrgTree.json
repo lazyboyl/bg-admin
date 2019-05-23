@@ -1,0 +1,63 @@
+{
+  "code": 200,
+  "msg": "加载组织架构数据成功",
+  "obj": [
+    {
+      "orgId": 1,
+      "title": "虚拟顶级组织",
+      "orgCode": "xx",
+      "parentOrgId": 0,
+      "parentOrgName": null,
+      "fullPath": "1",
+      "expand": true,
+      "checked": false,
+      "children": [
+        {
+          "orgId": 2,
+          "title": "研发一部",
+          "orgCode": "xx-1",
+          "parentOrgId": 1,
+          "parentOrgName": "虚拟顶级组织",
+          "fullPath": "1.2",
+          "expand": true,
+          "checked": false,
+          "children": [
+            {
+              "orgId": 3,
+              "title": "研发一组",
+              "orgCode": "xx-12",
+              "parentOrgId": 2,
+              "parentOrgName": "研发一部",
+              "fullPath": "1.2.3",
+              "expand": true,
+              "checked": false,
+              "children": []
+            }
+          ]
+        },
+        {
+          "orgId": 4,
+          "title": "研发二部",
+          "orgCode": "xx-2",
+          "parentOrgId": 1,
+          "parentOrgName": "虚拟顶级组织",
+          "fullPath": "1.4",
+          "expand": true,
+          "checked": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "orgId": 10,
+      "title": "2121阿萨德",
+      "orgCode": "121阿打算",
+      "parentOrgId": 0,
+      "parentOrgName": "",
+      "fullPath": ".10",
+      "expand": true,
+      "checked": false,
+      "children": []
+    }
+  ]
+}

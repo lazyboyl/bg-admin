@@ -1,1 +1,7 @@
-{"code":200,"msg":"登陆成功","obj":{"token":"28a6b0bd2c3c4fa3a52335ad6d9aafb2"}}
+{
+  "code": 200,
+  "msg": "登陆成功",
+  "obj": {
+    "token": "28a6b0bd2c3c4fa3a52335ad6d9aafb2"
+  }
+}

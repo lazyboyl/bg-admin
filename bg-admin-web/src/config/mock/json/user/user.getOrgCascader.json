@@ -1,0 +1,33 @@
+{
+  "code": 200,
+  "msg": "加载级联菜单的组织架构数据成功",
+  "obj": [
+    {
+      "value": "1",
+      "label": "虚拟顶级组织",
+      "children": [
+        {
+          "value": "2",
+          "label": "研发一部",
+          "children": [
+            {
+              "value": "3",
+              "label": "研发一组",
+              "children": []
+            }
+          ]
+        },
+        {
+          "value": "4",
+          "label": "研发二部",
+          "children": []
+        }
+      ]
+    },
+    {
+      "value": "10",
+      "label": "2121阿萨德",
+      "children": []
+    }
+  ]
+}

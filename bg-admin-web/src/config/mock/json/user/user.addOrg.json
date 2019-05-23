@@ -1,0 +1,13 @@
+{
+  "code": 200,
+  "msg": "增加组织架构成功",
+  "obj": {
+    "orgId": 12,
+    "orgName": "3123",
+    "orgCode": "123123",
+    "parentOrgId": 0,
+    "parentOrgName": "",
+    "crtDate": "2019-05-22T07:37:58.485+0000",
+    "fullPath": null
+  }
+}

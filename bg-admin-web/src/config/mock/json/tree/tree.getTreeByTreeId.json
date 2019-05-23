@@ -1,0 +1,15 @@
+{
+  "code": 200,
+  "msg": "获取菜单节点成功",
+  "obj": {
+    "treeId": 16,
+    "treeName": "313",
+    "treeCode": "1231",
+    "treeState": "1",
+    "treeType": "1",
+    "parentTreeId": 0,
+    "parentTreeName": "",
+    "crtDate": "2019-05-22T06:26:27.000+0000",
+    "fullPath": ".16"
+  }
+}

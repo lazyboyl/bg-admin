@@ -1,0 +1,20 @@
+{
+  "code": 200,
+  "msg": "加载所有的角色成功",
+  "obj": [
+    {
+      "roleId": "1",
+      "roleName": "系统管理员",
+      "roleCode": "system-admin",
+      "crtDate": "2019-05-01T14:10:00.000+0000",
+      "roleTrees": null
+    },
+    {
+      "roleId": "615b36a78e414e2d9a69614ecca08306",
+      "roleName": "普通用户",
+      "roleCode": "normal",
+      "crtDate": "2019-05-15T12:22:11.000+0000",
+      "roleTrees": null
+    }
+  ]
+}

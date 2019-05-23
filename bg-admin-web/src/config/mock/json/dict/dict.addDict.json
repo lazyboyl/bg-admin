@@ -1,0 +1,11 @@
+{
+  "code": 200,
+  "msg": "增加字典数据成功",
+  "obj": {
+    "id": "bce4b89b789d4be99fe218d431e9a1b8",
+    "dictType": "21321",
+    "dictCode": "1312",
+    "dictText": "123",
+    "dictValue": "123"
+  }
+}

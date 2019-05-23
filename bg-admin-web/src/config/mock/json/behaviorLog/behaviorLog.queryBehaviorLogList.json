@@ -1,0 +1,81 @@
+{
+  "code": 200,
+  "msg": "获取日志列表数据成功！",
+  "obj": {
+    "pageSize": 10,
+    "current": 1,
+    "total": 279,
+    "rows": [
+      {
+        "behaviorLogId": 279,
+        "actionMethod": "/behaviorLog/queryBehaviorLogList",
+        "actionDate": "2019-05-22T10:17:52.000+0000",
+        "actionUser": "系统管理员",
+        "actionUserId": "1"
+      },
+      {
+        "behaviorLogId": 278,
+        "actionMethod": "/behaviorLog/queryBehaviorLogList",
+        "actionDate": "2019-05-22T10:17:47.000+0000",
+        "actionUser": "系统管理员",
+        "actionUserId": "1"
+      },
+      {
+        "behaviorLogId": 277,
+        "actionMethod": "/tree/queryTreeButtonList",
+        "actionDate": "2019-05-22T10:11:31.000+0000",
+        "actionUser": "系统管理员",
+        "actionUserId": "1"
+      },
+      {
+        "behaviorLogId": 276,
+        "actionMethod": "/tree/queryTreeButtonList",
+        "actionDate": "2019-05-22T10:11:26.000+0000",
+        "actionUser": "系统管理员",
+        "actionUserId": "1"
+      },
+      {
+        "behaviorLogId": 275,
+        "actionMethod": "/tree/getTreeList",
+        "actionDate": "2019-05-22T10:11:23.000+0000",
+        "actionUser": "系统管理员",
+        "actionUserId": "1"
+      },
+      {
+        "behaviorLogId": 274,
+        "actionMethod": "/user/queryUserList",
+        "actionDate": "2019-05-22T09:07:46.000+0000",
+        "actionUser": "系统管理员",
+        "actionUserId": "1"
+      },
+      {
+        "behaviorLogId": 273,
+        "actionMethod": "/user/deleteUser",
+        "actionDate": "2019-05-22T09:07:45.000+0000",
+        "actionUser": "系统管理员",
+        "actionUserId": "1"
+      },
+      {
+        "behaviorLogId": 272,
+        "actionMethod": "/user/queryUserList",
+        "actionDate": "2019-05-22T09:06:47.000+0000",
+        "actionUser": "系统管理员",
+        "actionUserId": "1"
+      },
+      {
+        "behaviorLogId": 271,
+        "actionMethod": "/user/updateUser",
+        "actionDate": "2019-05-22T09:06:47.000+0000",
+        "actionUser": "系统管理员",
+        "actionUserId": "1"
+      },
+      {
+        "behaviorLogId": 268,
+        "actionMethod": "/org/getOrgCascader",
+        "actionDate": "2019-05-22T09:05:51.000+0000",
+        "actionUser": "系统管理员",
+        "actionUserId": "1"
+      }
+    ]
+  }
+}

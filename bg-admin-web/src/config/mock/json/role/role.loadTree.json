@@ -1,0 +1,92 @@
+{
+  "code": 200,
+  "msg": "加载菜单数据成功",
+  "obj": [
+    {
+      "treeId": 1,
+      "title": "系统管理",
+      "treeCode": "system-manage",
+      "treeState": "1",
+      "treeType": "1",
+      "parentTreeId": 0,
+      "parentTreeName": null,
+      "expand": true,
+      "checked": false,
+      "children": [
+        {
+          "treeId": 2,
+          "title": "字典管理",
+          "treeCode": "system-manage-dict",
+          "treeState": "1",
+          "treeType": "1",
+          "parentTreeId": 1,
+          "parentTreeName": "系统管理",
+          "expand": true,
+          "checked": false,
+          "children": [
+            {
+              "treeId": 3,
+              "title": "增加字典",
+              "treeCode": "system-manage-dict-add",
+              "treeState": "1",
+              "treeType": "2",
+              "parentTreeId": 2,
+              "parentTreeName": "字典管理",
+              "expand": true,
+              "checked": false,
+              "children": []
+            }
+          ]
+        },
+        {
+          "treeId": 4,
+          "title": "角色管理",
+          "treeCode": "system-manage-role",
+          "treeState": "1",
+          "treeType": "1",
+          "parentTreeId": 1,
+          "parentTreeName": "系统管理",
+          "expand": true,
+          "checked": false,
+          "children": []
+        },
+        {
+          "treeId": 13,
+          "title": "菜单管理",
+          "treeCode": "system-manage-tree",
+          "treeState": "1",
+          "treeType": "1",
+          "parentTreeId": 1,
+          "parentTreeName": "系统管理",
+          "expand": true,
+          "checked": false,
+          "children": []
+        },
+        {
+          "treeId": 14,
+          "title": "用户组织",
+          "treeCode": "system-manage-user",
+          "treeState": "1",
+          "treeType": "1",
+          "parentTreeId": 1,
+          "parentTreeName": "系统管理",
+          "expand": true,
+          "checked": false,
+          "children": []
+        },
+        {
+          "treeId": 15,
+          "title": "行为日志",
+          "treeCode": "system-manage-behavior",
+          "treeState": "1",
+          "treeType": "1",
+          "parentTreeId": 1,
+          "parentTreeName": "系统管理",
+          "expand": true,
+          "checked": false,
+          "children": []
+        }
+      ]
+    }
+  ]
+}

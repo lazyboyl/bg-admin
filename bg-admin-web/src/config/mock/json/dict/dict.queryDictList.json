@@ -1,0 +1,53 @@
+{
+  "code": 200,
+  "msg": "获取数据字典列表数据成功！",
+  "obj": {
+    "pageSize": 10,
+    "current": 1,
+    "total": 6,
+    "rows": [
+      {
+        "id": "1",
+        "dictType": "德萨",
+        "dictCode": "爽肤水",
+        "dictText": "的神色",
+        "dictValue": "撒旦法"
+      },
+      {
+        "id": "7e672498ec014f818ded4a5fdf68c0cd",
+        "dictType": "323",
+        "dictCode": "232",
+        "dictText": "23",
+        "dictValue": "232"
+      },
+      {
+        "id": "84888c47a2ce4de2bd8aeeb3a8a4bf6e",
+        "dictType": "1212",
+        "dictCode": "121",
+        "dictText": "2121",
+        "dictValue": "212"
+      },
+      {
+        "id": "70f7ac6325fe410e881f35a6a440a168",
+        "dictType": "1",
+        "dictCode": "1",
+        "dictText": "1",
+        "dictValue": "1"
+      },
+      {
+        "id": "7763bf1e2a3a4960bcac121500d12b6e",
+        "dictType": "1",
+        "dictCode": "2",
+        "dictText": "2",
+        "dictValue": "2"
+      },
+      {
+        "id": "7b2b97fcc3dd4eba8829b9a20326a993",
+        "dictType": "1",
+        "dictCode": "11",
+        "dictText": "1",
+        "dictValue": "1"
+      }
+    ]
+  }
+}
