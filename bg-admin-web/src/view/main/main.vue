@@ -48,9 +48,9 @@
             <Submenu name="1">
               <template slot="title">
                 <Icon type="ios-navigate"></Icon>
-                Item 1
+                系统管理
               </template>
-              <MenuItem name="1-1">Option 1</MenuItem>
+              <MenuItem name="1-1" to="sys/dictList">数据字典</MenuItem>
               <MenuItem name="1-2">Option 2</MenuItem>
               <MenuItem name="1-3">Option 3</MenuItem>
             </Submenu>
@@ -81,7 +81,7 @@
           </Breadcrumb>
           <!-- 此处存放的是文本内容的区域 -->
           <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
-            Content
+            <router-view/>
           </Content>
         </Layout>
       </Layout>
