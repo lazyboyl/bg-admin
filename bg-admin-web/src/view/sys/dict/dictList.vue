@@ -12,7 +12,7 @@
       </div>
       <div style="clear: both;"></div>
       <div style="margin-top: 10px;">
-        <Table ref="dictTable" @on-sort-change="onSortChange"  :columns="columns" :data="dictData" :height="tableHeight">
+        <Table ref="dictTable" @on-sort-change="onSortChange" :columns="columns" :data="dictData" :height="tableHeight">
           <template slot-scope="{ row, index }" slot="dictCode">
             <Input type="text" v-model="editDictCode" v-if="editIndex === index"/>
             <span v-else>{{ row.dictCode }}</span>
@@ -45,15 +45,21 @@
               :page-size="pageSize" @on-change="changePage" @on-page-size-change="changePageSize"/>
       </div>
     </Card>
+    <addDict v-model="addShow" v-on:handleSearch="handleSearch"></addDict>
   </div>
 </template>
 <script>
 
-  import { deleteDict, updateDict, queryDictList} from '../../../api/sys/dict/dict.api'
+  import {deleteDict, updateDict, queryDictList} from '../../../api/sys/dict/dict.api'
+  import addDict from './addDict'
 
   export default {
+    components: {
+      addDict
+    },
     data() {
       return {
+        addShow: false,
         search: '',
         dictData: [],
         columns: [
@@ -85,14 +91,14 @@
             slot: 'action'
           }
         ],
-        key:'dictType',
-        order:'desc',
+        key: 'dictType',
+        order: 'desc',
         editIndex: -1,  // 当前聚焦的输入框的行数
         editId: '',
         editDictCode: '',
         editDictText: '',
         editDictValue: '',
-        tableHeight:200,
+        tableHeight: 200,
         total: 0,
         current: 1,
         pageSize: 10
@@ -100,7 +106,7 @@
     },
     methods: {
       addDict() {
-        console.log('增加字典')
+        this.addShow = true;
       },
       changePage(current) {
         this.current = current;
@@ -110,7 +116,7 @@
         this.pageSize = pageSize;
         this.handleSearch();
       },
-      handleSearch(){
+      handleSearch() {
         let current = this.current
         let pageSize = this.pageSize
         let search = this.search
@@ -129,11 +135,11 @@
             _this.total = res.obj.total
             _this.dictData = res.obj.rows
           } else {
-            this.$Message.error(  '新增数据字典失败,' + res.msg)
+            this.$Message.error('新增数据字典失败,' + res.msg)
           }
         });
       },
-      handleUpdate(index){
+      handleUpdate(index) {
         updateDict({
           id: this.editId,
           dictValue: this.editDictValue,
@@ -145,18 +151,18 @@
             this.editIndex = -1
             this.handleSearch()
           } else {
-            this.$Message.error( '更新字典数失败,' + res.msg)
+            this.$Message.error('更新字典数失败,' + res.msg)
           }
         });
       },
-      handleEdit(row, index){
+      handleEdit(row, index) {
         this.editDictCode = row.dictCode
         this.editDictText = row.dictText
         this.editDictValue = row.dictValue
         this.editId = row.id
         this.editIndex = index
       },
-      handleDelete(row, index){
+      handleDelete(row, index) {
         this.$Modal.confirm({
           title: '提示',
           content: '<p>是否删除字典数据？</p>',
@@ -176,11 +182,11 @@
           }
         });
       },
-      onSortChange(sort){
-        console.log(sort.key+'-'+sort.order)
-        if(sort.order=='normal'){
+      onSortChange(sort) {
+        console.log(sort.key + '-' + sort.order)
+        if (sort.order == 'normal') {
           this.order = '';
-        }else{
+        } else {
           this.key = sort.key;
           this.order = sort.order;
         }
