@@ -50,8 +50,8 @@
                 <Icon type="ios-navigate"></Icon>
                 系统管理
               </template>
-              <MenuItem name="1-1" to="dictList">数据字典</MenuItem>
-              <MenuItem name="1-2" to="treeList">菜单管理</MenuItem>
+              <MenuItem name="1-1" to="/sys/dictList">数据字典</MenuItem>
+              <MenuItem name="1-2" to="/sys/treeList">菜单管理</MenuItem>
               <MenuItem name="1-3">Option 3</MenuItem>
             </Submenu>
             <Submenu name="2">
