@@ -49,6 +49,19 @@ export default new Router({
           component: resolve => {
             require(['../view/sys/dict/dictList.vue'], resolve);
           }
+        },
+        {
+          path: 'treeList',
+          name: 'treeList',
+          meta: {
+            icon: 'md-git-network',
+            title: '菜单管理',
+            code:'system-manage-tree',
+            requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
+          },
+          component: resolve => {
+            require(['../view/sys/tree/treeList.vue'], resolve);
+          }
         }
       ]
     }
