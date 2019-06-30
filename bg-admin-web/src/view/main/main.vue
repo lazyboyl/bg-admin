@@ -52,7 +52,7 @@
               </template>
               <MenuItem name="1-1" to="/sys/dictList">数据字典</MenuItem>
               <MenuItem name="1-2" to="/sys/treeList">菜单管理</MenuItem>
-              <MenuItem name="1-3">Option 3</MenuItem>
+              <MenuItem name="1-3" to="/sys/roleList">角色管理</MenuItem>
             </Submenu>
             <Submenu name="2">
               <template slot="title">
