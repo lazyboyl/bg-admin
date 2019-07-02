@@ -75,6 +75,19 @@ export default new Router({
           component: resolve => {
             require(['../view/sys/role/roleList.vue'], resolve);
           }
+        },
+        {
+          path: 'orgList',
+          name: 'orgList',
+          meta: {
+            icon: 'ios-people',
+            title: '用户组织',
+            code:'system-manage-user',
+            requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
+          },
+          component: resolve => {
+            require(['../view/sys/user/orgList.vue'], resolve);
+          }
         }
       ]
     }
