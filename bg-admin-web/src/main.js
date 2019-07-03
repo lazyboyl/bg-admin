@@ -8,6 +8,9 @@ import i18n from './local'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import runConfig from './config/run.config';
+import iviewArea from 'iview-area';
+
+Vue.use(iviewArea);
 
 /**
  * 表示当前的应用启动的时候是以mock的方式启动

@@ -46,6 +46,8 @@
             v-on:reloadTree="initTree"></addOrg>
     <updateOrg v-model="updateOrgShow" :orgId="parentOrgId" v-on:reloadTree="initTree">
     </updateOrg>
+    <addUser v-model="addUserShow"  v-on:handleSearch="handleSearch"></addUser>
+    <updateUser v-model="updateUserShow" :userId="userId" v-on:handleSearch="handleSearch"></updateUser>
   </div>
 </template>
 <script>
@@ -62,11 +64,15 @@
 
   import addOrg from './addOrg'
   import updateOrg from './updateOrg'
+  import addUser from './addUser'
+  import updateUser from './updateUser'
 
   export default {
     components: {
       addOrg,
-      updateOrg
+      updateOrg,
+      addUser,
+      updateUser
     },
     data() {
       return {
