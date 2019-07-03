@@ -2,20 +2,21 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+import {router} from './router/index'
 // 引入国际化包
 import i18n from './local'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import runConfig from './config/run.config';
 import iviewArea from 'iview-area';
+import store from './store';
 
 Vue.use(iviewArea);
 
 /**
  * 表示当前的应用启动的时候是以mock的方式启动
  */
-if(runConfig.runConfig.mock){
+if (runConfig.runConfig.mock) {
   require('./config/mock/mock.js')
 }
 
@@ -52,6 +53,7 @@ new Vue({
   router,
   // 国际化初始化
   i18n,
-  components: { App },
+  store: store,
+  components: {App},
   template: '<App/>'
 })

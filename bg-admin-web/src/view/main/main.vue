@@ -76,9 +76,14 @@
         <Layout :style="{padding: '0 24px 24px'}">
           <!--  此处是面包屑导航条 -->
           <Breadcrumb :style="{margin: '24px 0'}">
-            <BreadcrumbItem>Home</BreadcrumbItem>
-            <BreadcrumbItem>Components</BreadcrumbItem>
-            <BreadcrumbItem>Layout</BreadcrumbItem>
+            <BreadcrumbItem>
+              <Icon type="ios-home-outline"></Icon>
+              首页
+            </BreadcrumbItem>
+            <BreadcrumbItem v-for="item in breadCrumbList" v-bind:key="item.name" v-if="item.meta && item.meta.title">
+              <Icon :type="item.icon"></Icon>
+              {{showBreadcrumbItem(item)}}
+            </BreadcrumbItem>
           </Breadcrumb>
           <!-- 此处存放的是文本内容的区域 -->
           <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
@@ -91,6 +96,7 @@
 </template>
 <script>
   import Language from '../../components/language';
+  import {mapMutations} from 'vuex';
 
   export default {
     components:{
@@ -102,6 +108,9 @@
       }
     },
     methods:{
+      ...mapMutations([
+        'setBreadCrumb'
+      ]),
       /**
        * 顶部跟随着滚动条的变化而滚动
        */
@@ -116,6 +125,19 @@
       setLanguage(lang) {
         this.local = lang
         localStorage.setItem('lang',lang)
+      },
+      showBreadcrumbItem(item) {
+        return (item.meta && item.meta.title) || item.name
+      }
+    },
+    watch: {
+      '$route'(newRoute) {
+        this.setBreadCrumb(newRoute.matched)
+      }
+    },
+    computed: {
+      breadCrumbList() {
+        return this.$store.state.app.breadCrumbList
       }
     },
     mounted() {
