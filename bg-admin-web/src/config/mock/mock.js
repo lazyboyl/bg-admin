@@ -16,6 +16,7 @@ import userCcreateUser from './json/user/user.createUser';
 import userGetUserByUserId from './json/user/user.getUserByUserId';
 import userUpdateUser from './json/user/user.updateUser';
 import userDeleteUser from './json/user/user.deleteUser';
+import changePassword from './json/user/user.changePassword'
 
 Mock.mock('/user/login', 'post', userLogin);
 Mock.mock('/user/getUserInfo', 'post', userGetUserInfo);
@@ -33,6 +34,7 @@ Mock.mock('/user/createUser', 'post', userCcreateUser);
 Mock.mock('/user/getUserByUserId', 'post', userGetUserByUserId);
 Mock.mock('/user/updateUser', 'post', userUpdateUser);
 Mock.mock('/user/deleteUser', 'post', userDeleteUser);
+Mock.mock('/user/changePassword', 'post', changePassword);
 
 // 字典的mock
 import dictQueryDictList from './json/dict/dict.queryDictList';
