@@ -7,6 +7,7 @@ package com.github.bg.admin.core.constant;
  */
 public class SystemStaticConst {
 
+
     /**
      * 系统返回的编码的key
      */
@@ -27,11 +28,41 @@ public class SystemStaticConst {
      */
     public static final int FAIL = 400;
 
+    /**
+     * 当前TOKEN过期
+     */
+    public static final int AUTH_TOKEN_EXPIRE = 409;
 
     /**
      * 当前用户没有权限
      */
-    public static final int AUTH_FAIL = 300;
+    public static final int AUTH_FAIL = 403;
+
+    /**
+     * 当前用户没有登录
+     */
+    public static final int NOT_LOGIN = 401;
+
+    /**
+     * 登陆的地址
+     */
+    public static final String LOGIN_URL = "/user/login";
+
+    /**
+     * 功能描述：刷新token的地址
+     */
+    public static final String REFRESH_URL = "/user/refreshToken";
+
+    /**
+     * 获取用户信息地址
+     */
+    public static final String USER_INFO_URL = "/user/getUserInfo";
+
+
+    /**
+     * 请求的方式
+     */
+    public static final String ACTION_TYPE_OPTIONS = "OPTIONS";
 
 
 }
