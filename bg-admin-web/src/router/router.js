@@ -4,6 +4,12 @@ export default [
   {
     path: '/login',
     name: 'login',
+    meta: {
+      icon: 'ios-settings',
+      hideInMenu: true,
+      title: '登陆页',
+      requireAuth: false //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
+    },
     component: resolve => {
       require(['../view/login/login.vue'], resolve);
     }

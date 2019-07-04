@@ -43,7 +43,7 @@
 </template>
 <script>
   import Language from '../../components/language';
-  import { login } from '../../api/sys/user/user.api';
+  import {mapActions} from 'vuex';
 
   export default {
     components: {
@@ -69,20 +69,30 @@
       }
     },
     methods: {
+      ...mapActions([
+        'handleLogin',
+        'getUserInfo'
+      ]),
       loginSystem() {
         this.$refs['loginForm'].validate((valid) => {
+          // 输出加密结果
           if (valid) {
-            login(this.loginForm).then(res=>{
-              if(res.code==200){
-                console.log('----'+JSON.stringify(res))
-                this.$router.push({
-                  name: 'main'
+            this.handleLogin({
+              loginAccount: this.loginForm.loginAccount,
+              loginPassword: this.loginForm.loginPassword
+            }).then(res => {
+              if (this.token != '' && res.code == 200) {
+                this.getUserInfo().then(res => {
+                  if (res.code = 200) {
+                    this.$router.push({
+                      name: 'main'
+                    })
+                  }
                 })
-              }else{
+              } else {
                 this.$Message.error('账号密码错误！');
               }
             })
-
           }
         })
       },
