@@ -1,8 +1,10 @@
 package com.github.bg.admin.core;
 
 import com.didispace.swagger.EnableSwagger2Doc;
+import com.github.bg.admin.core.util.RedisCache;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
@@ -17,6 +19,11 @@ public class BgAdminWebCoreApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BgAdminWebCoreApplication.class, args);
+	}
+
+	@Bean
+	RedisCache redisCache(){
+		return new RedisCache();
 	}
 
 }

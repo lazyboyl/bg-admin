@@ -8,6 +8,17 @@ logging:
     com.github.bg.admin.core: DEBUG
 
 spring:
+  redis:
+    host: 127.0.0.1
+    password: 123456
+    port: 6379
+    database: 0
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 20
+        min-idle: 0
+      timeout: 2000
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/vcm?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
@@ -36,3 +47,14 @@ swagger:
   contact:
     name: 林泽锋
     email: 282245889@qq.com
+
+auth:
+  # authToken的过期时间
+  authTokenExpire: 3600
+  # refreshToken过期时间
+  refreshTokenExpire: 7200
+  # 放行的权限列表，采用小写的冒号分隔
+  releaseUrl: /user/refreshToken
+  # false表示用户单点登陆,true表示用户多点登录
+  singleLanding: false
+

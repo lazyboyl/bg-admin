@@ -1,10 +1,14 @@
 package com.github.bg.admin.core.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "t_user")
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = -5809782578282943998L;
+
     /**
      * 用户流水ID
      */

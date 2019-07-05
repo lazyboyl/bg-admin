@@ -1,1 +1,1 @@
-export default "mock";
+export default "development";
