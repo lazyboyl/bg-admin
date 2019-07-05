@@ -2,12 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.github.bg.admin.core.dao.RoleDao">
   <resultMap id="BaseResultMap" type="com.github.bg.admin.core.entity.Role">
-    <!--
-      WARNING - @mbg.generated
-    -->
     <id column="roleId" jdbcType="VARCHAR" property="roleId" />
     <result column="roleName" jdbcType="VARCHAR" property="roleName" />
     <result column="roleCode" jdbcType="VARCHAR" property="roleCode" />
     <result column="crtDate" jdbcType="TIMESTAMP" property="crtDate" />
   </resultMap>
+
+  <!-- 根据用户ID来获取该用户的相应的绑定的数据 -->
+  <select id="getUserRoleListByUserId" resultMap="BaseResultMap">
+        select tr.* from t_role tr inner join t_user_role tur on tr.roleId = tur.roleId where tur.userId = #{userId}
+  </select>
+
 </mapper>

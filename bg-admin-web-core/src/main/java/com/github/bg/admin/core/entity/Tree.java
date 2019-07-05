@@ -62,6 +62,20 @@ public class Tree {
     private String fullPath;
 
     /**
+     * 权限路径采用小写的冒号分隔
+     */
+    @Column(name = "powerPath")
+    private String powerPath;
+
+    public String getPowerPath() {
+        return powerPath;
+    }
+
+    public void setPowerPath(String powerPath) {
+        this.powerPath = powerPath;
+    }
+
+    /**
      * 获取菜单流水ID
      *
      * @return treeId - 菜单流水ID

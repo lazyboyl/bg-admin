@@ -2,9 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.github.bg.admin.core.dao.TreeDao">
   <resultMap id="BaseResultMap" type="com.github.bg.admin.core.entity.Tree">
-    <!--
-      WARNING - @mbg.generated
-    -->
     <id column="treeId" jdbcType="INTEGER" property="treeId" />
     <result column="treeName" jdbcType="VARCHAR" property="treeName" />
     <result column="treeCode" jdbcType="VARCHAR" property="treeCode" />
@@ -14,5 +11,13 @@
     <result column="parentTreeName" jdbcType="VARCHAR" property="parentTreeName" />
     <result column="crtDate" jdbcType="TIMESTAMP" property="crtDate" />
     <result column="fullPath" jdbcType="VARCHAR" property="fullPath" />
+    <result column="powerPath" jdbcType="VARCHAR" property="powerPath"/>
   </resultMap>
+
+  <!-- 获取当前登录的用户的权限 -->
+  <select id="getLoginUserPowerPath" resultMap="BaseResultMap">
+       select tt.* from t_tree tt inner join t_role_tree ttt on tt.treeId = ttt.treeId where ttt.roleId in
+       (select tur.roleId from t_user_role tur where tur.userId = #{userId} )
+    </select>
+
 </mapper>
