@@ -1,5 +1,8 @@
 package com.github.bg.admin.core.entity;
 
+import com.github.bg.admin.core.util.UuidGenId;
+import tk.mybatis.mapper.annotation.KeySql;
+
 import javax.persistence.*;
 
 @Table(name = "t_dict")
@@ -9,7 +12,7 @@ public class Dict {
      */
     @Id
     @Column(name = "id")
-
+    @KeySql(genId = UuidGenId.class)
     private String id;
 
     /**
