@@ -27,4 +27,53 @@
         tu.userId = #{userId}  )
     </select>
 
+    <!-- 更新菜单节点 -->
+    <update id="updateTree">
+        update t_tree set treeName = #{treeName} ,treeCode = #{treeCode},powerPath=#{powerPath} where treeId = #{treeId}
+    </update>
+
+    <!-- 判断当前菜单节点底下是否还有子节点 -->
+    <select id="countTreeChildren" resultType="java.lang.Integer">
+        select count(*) from t_tree where parentTreeId = #{treeId}
+    </select>
+
+    <!-- 冻结/解冻按钮 -->
+    <update id="operateButton">
+        update t_tree set treeState = #{treeState} where  treeId = #{treeId}
+    </update>
+
+    <!-- 更新节点的路径 -->
+    <update id="updateFullPath">
+        update t_tree set fullPath = #{fullPath} where  treeId = #{treeId}
+    </update>
+
+    <!-- 更新按钮节点 -->
+    <update id="updateButton">
+        update t_tree set treeCode = #{treeCode},treeName = #{treeName},powerPath=#{powerPath} where treeId = #{treeId}
+    </update>
+
+    <!-- 验证菜单节点或者按钮节点的编码是否已经存在了 -->
+    <select id="checkTreeCode" resultType="java.lang.Integer">
+        select count(*) from t_tree where treeCode = #{treeCode}
+        <if test="treeId != 0">
+            and treeId != #{treeId}
+        </if>
+    </select>
+
+    <!-- 获取菜单的按钮的列表 -->
+    <select id="queryTreeButtonList" resultMap="BaseResultMap">
+        select * from t_tree where treeType = '2' and parentTreeId = #{parentTreeId}
+        <if test="search != null  and search !=''">
+            and (
+            treeName like concat('%',#{search},'%') or
+            treeCode like concat('%',#{search},'%')
+            )
+        </if>
+    </select>
+
+    <!-- 根据角色ID来查询该角色底下的所有的关联的菜单的数据 -->
+    <select id="queryTreeByRoleId" resultMap="BaseResultMap">
+     select tt.* from t_tree tt inner join t_role_tree trt on tt.treeId = trt.treeId where trt.roleId = #{roleId}
+    </select>
+
 </mapper>

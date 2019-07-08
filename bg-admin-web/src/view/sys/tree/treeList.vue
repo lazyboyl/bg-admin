@@ -69,9 +69,12 @@
         </Col>
       </Row>
     </Card>
+    <addButton v-model="addButtonShow" :parentTreeId="parentTreeId" :parentTreeName="parentTreeName"
+               v-on:handleSearch="handleSearch"></addButton>
     <addTree v-model="addTreeShow" :parentTreeId="parentTreeId" :parentTreeName="parentTreeName"
              v-on:reloadTree="initTree"></addTree>
     <updateTree v-model="updateTreeShow" :treeId="parentTreeId" v-on:reloadTree="initTree"></updateTree>
+    <updateButton v-model="updateButtonShow" :treeId="editTreeId" v-on:handleSearch="handleSearch"></updateButton>
   </div>
 </template>
 <script>
@@ -82,17 +85,23 @@
     operateButton,
     deleteTree
   } from "../../../api/sys/tree/tree.api"
+  import addButton from './addButton'
+  import updateButton from './updateButton'
   import addTree from './addTree'
   import updateTree from './updateTree'
 
   export default {
     name: 'treeList',
     components: {
+      addButton,
+      updateButton,
       addTree,
       updateTree
     },
     data() {
       return {
+        addButtonShow: false,
+        updateButtonShow: false,
         addTreeShow: false,
         updateTreeShow: false,
         roleTreeDate: [],
@@ -138,20 +147,72 @@
       }
     },
     methods: {
-      handleOperate(row, treeState) {
-        console.log('操作')
-      },
       handleTreeButton() {
-        console.log('增加按钮')
+        this.addButtonShow = true
+      },
+      handleOperate(row, treeState) {
+        let content = '是否冻结当前按钮'
+        if (treeState == '1') {
+          content = '是否解冻当前按钮'
+        }
+
+        this.$Modal.confirm({
+          title: this.$t('modal.title'),
+          content: '<p>' + content + '</p>',
+          onOk: () => {
+            operateButton({treeId: row.treeId, treeState: treeState}).then(res => {
+              if (res.code == 200) {
+                this.$Message.success(res.msg);
+                // 冻结用户成功同时刷新grid
+                this.handleSearch();
+              } else {
+                this.$Message.warning(res.msg);
+              }
+            });
+          },
+          onCancel: () => {
+            this.$Message.info('取消');
+          }
+        });
       },
       handleDeleteButton(row) {
-        console.log('删除按钮')
+        this.$Modal.confirm({
+          title: '删除按钮',
+          content: '<p>是否删除当前按钮节点</p>',
+          onOk: () => {
+            deleteButton({treeId: row.treeId}).then(res => {
+              if (res.code == 200) {
+                this.$Message.success(res.msg);
+                // 删除数据成功同时刷新grid
+                this.handleSearch();
+              } else {
+                this.$Message.warning(res.msg);
+              }
+            });
+          },
+          onCancel: () => {
+            this.$Message.info('取消删除');
+          }
+        });
       },
       handleEditButton(row, index) {
-        console.log('编辑按钮')
+        this.editTreeId = row.treeId
+        this.updateButtonShow = true
       },
       handleUpdateButton(index) {
-        console.log('更新按钮')
+        updateButton({
+          treeId: this.editTreeId,
+          treeCode: this.editTreeCode,
+          treeName: this.editTreeName
+        }).then(res => {
+          if (res.code == 200) {
+            this.$Message.success(this.$t('tree.updateButtonSuccess'))
+            this.editIndex = -1
+            this.handleSearch()
+          } else {
+            this.$Message.error(this.$t('tree.updateButtonFail') + ',' + res.msg)
+          }
+        });
       },
       changePage(current) {
         this.current = current;
@@ -171,7 +232,29 @@
         this.handleSearch();
       },
       handleSearch() {
-        console.log('--查询--')
+        let current = this.current
+        let pageSize = this.pageSize
+        let search = this.search
+        let orderKey = this.key
+        let orderByValue = this.order
+        let parentTreeId = this.parentTreeId
+        const _this = this;
+        queryTreeButtonList({
+          current,
+          pageSize,
+          search,
+          parentTreeId,
+          orderKey,
+          orderByValue
+        }).then(res => {
+          if (res.code == 200) {
+            this.$Message.success('查询成功')
+            _this.total = res.obj.total
+            _this.treeButtonData = res.obj.rows
+          } else {
+            this.$Message.error(res.msg)
+          }
+        })
       },
       handleAdd() {
         this.addTreeShow = true;
@@ -240,6 +323,11 @@
       // 初始化完成以后加载菜单数据
       this.initTree();
       this.tableHeight = window.innerHeight - this.$refs.treeButtonTable.$el.offsetTop - 335
+    },
+    watch: {
+      parentTreeId() {
+        this.handleSearch();
+      }
     }
   }
 </script>
