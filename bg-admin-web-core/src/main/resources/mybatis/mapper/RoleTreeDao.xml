@@ -12,4 +12,9 @@
     delete from t_role_tree where treeId = #{treeId}
   </delete>
 
+  <!-- 根据角色ID来删除关联的角色数据 -->
+  <delete id="deleteRoleTreeByRoleId">
+    delete from t_role_tree where roleId = #{roleId}
+  </delete>
+
 </mapper>

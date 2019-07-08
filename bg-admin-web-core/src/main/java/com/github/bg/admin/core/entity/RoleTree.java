@@ -1,5 +1,8 @@
 package com.github.bg.admin.core.entity;
 
+import com.github.bg.admin.core.util.UuidGenId;
+import tk.mybatis.mapper.annotation.KeySql;
+
 import javax.persistence.*;
 
 @Table(name = "t_role_tree")
@@ -9,7 +12,7 @@ public class RoleTree {
      */
     @Id
     @Column(name = "roleTreeId")
-    @GeneratedValue(generator = "JDBC")
+    @KeySql(genId = UuidGenId.class)
     private String roleTreeId;
 
     /**
@@ -23,6 +26,17 @@ public class RoleTree {
      */
     @Column(name = "treeId")
     private Integer treeId;
+
+    /**
+     *
+     * @param roleId 角色ID
+     * @param treeId 菜单ID
+     */
+    public RoleTree(String roleId,Integer treeId){
+        this.roleId = roleId;
+        this.treeId = treeId;
+    }
+
 
     /**
      * 获取角色菜单关联流水ID

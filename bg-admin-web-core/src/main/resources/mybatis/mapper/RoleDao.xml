@@ -11,6 +11,36 @@
   <!-- 根据用户ID来获取该用户的相应的绑定的数据 -->
   <select id="getUserRoleListByUserId" resultMap="BaseResultMap">
         select tr.* from t_role tr inner join t_user_role tur on tr.roleId = tur.roleId where tur.userId = #{userId}
+    </select>
+
+  <!-- 更新角色信息 -->
+  <update id="updateRole">
+    update t_role set roleName = #{roleName},roleCode=#{roleCode} where roleId = #{roleId}
+    </update>
+
+  <!-- 验证角色编码和角色名字是否重复 -->
+  <select id="checkRoleCodeAndName" resultType="java.lang.Integer">
+    select count(*) from t_role where 1=1
+    <if test="roleName!=null and roleName !=''">
+      and roleName = #{roleName}
+    </if>
+    <if test="roleCode!=null and roleCode !=''">
+      and roleCode = #{roleCode}
+    </if>
+    <if test="roleId != null and roleId != ''">
+      and roleId != #{roleId}
+    </if>
+  </select>
+
+  <!-- 获取角色管理列表 -->
+  <select id="queryRoleList" resultMap="BaseResultMap">
+    select * from t_role where 1=1
+    <if test="search!=null and search!=''">
+      and (
+      roleName  like concat('%',#{search},'%') or
+      roleCode  like concat('%',#{search},'%')
+      )
+    </if>
   </select>
 
 </mapper>

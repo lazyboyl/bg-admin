@@ -20,4 +20,31 @@ public interface RoleDao extends Mapper<Role> {
      */
     List<Role> getUserRoleListByUserId(@Param("userId") String userId);
 
+    /**
+     * 功能描述：更新角色信息
+     *
+     * @param roleId   角色流水ID
+     * @param roleName 角色名字
+     * @param roleCode 角色编码
+     * @return 返回操作结果
+     */
+    int updateRole(@Param("roleId") String roleId, @Param("roleName") String roleName, @Param("roleCode") String roleCode);
+
+    /**
+     * 功能描述：验证角色编码和角色名字是否重复
+     *
+     * @param roleId   角色ID
+     * @param roleName 角色名字
+     * @param roleCode 角色编码
+     * @return 返回验证结果
+     */
+    int checkRoleCodeAndName(@Param("roleId") String roleId, @Param("roleName") String roleName, @Param("roleCode") String roleCode);
+
+    /**
+     * 功能描述：获取角色列表数据
+     *
+     * @param search 模糊匹配角色的roleName和roleCode
+     * @return 返回查询结果
+     */
+    List<Role> queryRoleList(@Param("search") String search);
 }

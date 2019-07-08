@@ -18,8 +18,14 @@ router.beforeEach((to, from, next) => {
   iView.LoadingBar.start();
   Util.title(to.meta.title);
   if (to.meta.requireAuth) {
-    console.log('需要权限，暂时放开！');
-    next();
+    if (localStorage.getItem('token') != '' && localStorage.getItem('token') != null) {
+      next();
+    } else {
+      next({
+        path: '/login',
+        query: {redirect: to.fullPath}//登录成功以后跳转到该路由
+      });
+    }
   } else {
     next();
   }

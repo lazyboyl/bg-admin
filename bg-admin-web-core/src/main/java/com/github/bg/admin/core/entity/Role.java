@@ -1,5 +1,8 @@
 package com.github.bg.admin.core.entity;
 
+import com.github.bg.admin.core.util.UuidGenId;
+import tk.mybatis.mapper.annotation.KeySql;
+
 import java.util.Date;
 import javax.persistence.*;
 
@@ -10,7 +13,7 @@ public class Role {
      */
     @Id
     @Column(name = "roleId")
-    @GeneratedValue(generator = "JDBC")
+    @KeySql(genId = UuidGenId.class)
     private String roleId;
 
     /**
@@ -30,6 +33,36 @@ public class Role {
      */
     @Column(name = "crtDate")
     private Date crtDate;
+
+    /**
+     * 角色数据集合
+     */
+    @Transient
+    private String roleTrees;
+
+    /**
+     * 空的构造函数
+     */
+    public Role(){
+        super();
+    }
+
+    public String getRoleTrees() {
+        return roleTrees;
+    }
+
+    public void setRoleTrees(String roleTrees) {
+        this.roleTrees = roleTrees;
+    }
+
+    /**
+     * 包含角色ID的构造函数
+     * @param roleId 角色ID
+     */
+    public Role(String roleId){
+        this.roleId = roleId;
+    }
+
 
     /**
      * 获取角色流水ID
