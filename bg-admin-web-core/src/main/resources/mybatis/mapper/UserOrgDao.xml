@@ -2,11 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.github.bg.admin.core.dao.UserOrgDao">
   <resultMap id="BaseResultMap" type="com.github.bg.admin.core.entity.UserOrg">
-    <!--
-      WARNING - @mbg.generated
-    -->
     <id column="userOrgId" jdbcType="VARCHAR" property="userOrgId" />
     <result column="userId" jdbcType="VARCHAR" property="userId" />
     <result column="orgId" jdbcType="INTEGER" property="orgId" />
   </resultMap>
+
+  <!-- 根据用户ID来删除关联关系的数据 -->
+  <delete id="deleteUserOrgByUserId">
+    delete from t_user_org where userId = #{userId}
+  </delete>
+
+  <!-- 根据组织架构ID来删除关联关系的数据 -->
+  <delete id="deleteUserOrgByOrgId">
+    delete from t_user_org where orgId = #{orgId}
+  </delete>
+
+  <!-- 根据组织架构ID来统计用户和组织架构的数量 -->
+  <select id="countUserOrgByOrgId" resultType="java.lang.Integer">
+     select count(*) from t_user_org where orgId = #{orgId}
+  </select>
+
+
 </mapper>

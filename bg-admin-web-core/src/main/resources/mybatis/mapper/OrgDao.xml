@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.bg.admin.core.dao.OrgDao">
+  <resultMap id="BaseResultMap" type="com.github.bg.admin.core.entity.Org">
+    <id column="orgId" jdbcType="INTEGER" property="orgId" />
+    <result column="orgName" jdbcType="VARCHAR" property="orgName" />
+    <result column="orgCode" jdbcType="VARCHAR" property="orgCode" />
+    <result column="parentOrgId" jdbcType="INTEGER" property="parentOrgId" />
+    <result column="parentOrgName" jdbcType="VARCHAR" property="parentOrgName" />
+    <result column="crtDate" jdbcType="TIMESTAMP" property="crtDate" />
+    <result column="fullPath" jdbcType="VARCHAR" property="fullPath" />
+  </resultMap>
+
+  <!-- 根据用户ID来获取关联的组织架构的数据 -->
+  <select id="getOrgByUserId" resultMap="BaseResultMap">
+    select t.* from t_org t left join  t_user_org tuo on t.orgId = tuo.orgId where tuo.userId = #{userId}
+  </select>
+
+  <!-- 更新节点的路径 -->
+  <update id="updateFullPath">
+        update t_org set fullPath = #{fullPath} where  orgId = #{orgId}
+    </update>
+
+  <!-- 判断当前组织架构底下是否还有子节点 -->
+  <select id="countOrgChildren" resultType="java.lang.Integer">
+        select count(*) from t_org where parentOrgId = #{orgId}
+    </select>
+
+  <!-- 验证角色编码和角色名字是否重复 -->
+  <select id="checkOrgNameAndCode" resultType="java.lang.Integer">
+    select count(*) from t_org where 1=1
+    <if test="orgName!=null and orgName !=''">
+      and orgName = #{orgName}
+    </if>
+    <if test="orgCode!=null and orgCode !=''">
+      and orgCode = #{orgCode}
+    </if>
+    <if test="orgId != null and orgId != ''">
+      and orgId != #{orgId}
+    </if>
+  </select>
+
+</mapper>
