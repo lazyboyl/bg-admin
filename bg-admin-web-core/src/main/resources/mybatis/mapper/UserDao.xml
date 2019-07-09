@@ -10,16 +10,47 @@
         <result column="lastLoginDate" jdbcType="TIMESTAMP" property="lastLoginDate"/>
         <result column="token" jdbcType="VARCHAR" property="token"/>
         <result column="headImg" jdbcType="VARCHAR" property="headImg"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="provinceName" jdbcType="VARCHAR" property="provinceName"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="cityName" jdbcType="VARCHAR" property="cityName"/>
+        <result column="area" jdbcType="VARCHAR" property="area"/>
+        <result column="areaName" jdbcType="VARCHAR" property="areaName"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
     </resultMap>
+
+    <!-- 根据token和旧的密码来更新新的密码 -->
+    <update id="changePassword">
+        update t_user set loginPassword = #{newPassword} where token = #{token} and loginPassword = #{oldPassword}
+    </update>
+
+    <!-- 根据token来获取用户数据 -->
+    <select id="getUserInfo" resultMap="BaseResultMap">
+         select * from t_user where token = #{token}
+    </select>
 
     <!-- 实现用户登陆 -->
     <select id="login" resultMap="BaseResultMap">
         select * from t_user where loginAccount = #{loginAccount} and loginPassword = #{loginPassword}
     </select>
 
-    <!-- 根据token来获取用户数据 -->
-    <select id="getUserInfo" resultMap="BaseResultMap">
-         select * from t_user where token = #{token}
+    <!-- 验证这个账户是否已经创建过了 -->
+    <select id="checkLoginAccount" resultType="java.lang.Integer">
+        select count(*) from t_user where loginAccount = #{loginAccount}
+    </select>
+
+    <!-- 查询用户的数据 -->
+    <select id="queryUserList" resultMap="BaseResultMap">
+        select tu.* from t_user tu left join t_user_org tuo on tu.userId = tuo.userId left join t_org tg on tuo.orgId = tg.orgId where 1=1
+        <if test="search != null  and search!='' ">
+            and (
+            tu.loginAccount like concat('%',#{search},'%') or
+            tu.nickName like concat('%',#{search},'%')
+            )
+        </if>
+        <if test="fullPath!= null  and fullPath!=''">
+            and tg.fullPath like concat(#{fullPath},'%')
+        </if>
     </select>
 
 </mapper>

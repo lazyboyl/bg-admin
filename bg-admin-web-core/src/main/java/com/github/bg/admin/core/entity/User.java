@@ -1,5 +1,8 @@
 package com.github.bg.admin.core.entity;
 
+import com.github.bg.admin.core.util.UuidGenId;
+import tk.mybatis.mapper.annotation.KeySql;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
@@ -14,7 +17,7 @@ public class User implements Serializable {
      */
     @Id
     @Column(name = "userId")
-    @GeneratedValue(generator = "JDBC")
+    @KeySql(genId = UuidGenId.class)
     private String userId;
 
     /**
@@ -58,6 +61,105 @@ public class User implements Serializable {
      */
     @Column(name = "headImg")
     private String headImg;
+
+    /**
+     * 用户所在省
+     */
+    @Column(name = "province")
+    private String province;
+
+    /**
+     * 用户所在省名称
+     */
+    @Column(name = "provinceName")
+    private String provinceName;
+
+    /**
+     * 用户所在市
+     */
+    @Column(name = "city")
+    private String city;
+
+    /**
+     * 用户所在市名称
+     */
+    @Column(name = "cityName")
+    private String cityName;
+
+    /**
+     * 用户所在区
+     */
+    @Column(name = "area")
+    private String area;
+
+    /**
+     * 用户所在区名称
+     */
+    @Column(name = "areaName")
+    private String areaName;
+
+    /**
+     * 具体地址
+     */
+    @Column(name = "address")
+    private String address;
+
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getProvinceName() {
+        return provinceName;
+    }
+
+    public void setProvinceName(String provinceName) {
+        this.provinceName = provinceName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getAreaName() {
+        return areaName;
+    }
+
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
+    }
 
     /**
      * 获取用户流水ID
