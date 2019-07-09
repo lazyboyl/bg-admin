@@ -23,6 +23,14 @@
       <FormItem label="详细地址" prop="address">
         <Input type="textarea" :rows="4" :maxlength=100 v-model="userForm.address" placeholder="请输入详细地址"/>
       </FormItem>
+      <FormItem label="头像地址" prop="headImg">
+        <Row>
+          <Col span="24">
+            <baseImgUpload ref="headImg" :maxLength="1" idImageType="user"
+                           @getUploadList="getHeadImgUploadList"></baseImgUpload>
+          </Col>
+        </Row>
+      </FormItem>
     </Form>
   </Modal>
 </template>
@@ -34,8 +42,13 @@
     checkLoginAccount
   } from "../../../api/sys/user/user.api"
 
+  import baseImgUpload from '../../../components/upload';
+
   export default {
     name: "addOrg",
+    components: {
+      baseImgUpload
+    },
     props: {
       value: {
         type: Boolean,
@@ -93,6 +106,13 @@
       }
     },
     methods: {
+      getHeadImgUploadList(val) {
+        if (val.length > 0) {
+          this.userForm.headImg = val[0].name;
+        } else {
+          this.userForm.headImg = '';
+        }
+      },
       ok() {
         this.$refs['userForm'].validate((valid) => {
           if (valid) {
@@ -164,6 +184,7 @@
         //当重新显示增加数据的时候重置整个form表单
         if (val) {
           this.$refs['userForm'].resetFields();
+          this.$refs['headImg'].cleanAll();
           getOrgCascader({}).then(res => {
             if (res.code == 200) {
               this.orgData = res.obj;

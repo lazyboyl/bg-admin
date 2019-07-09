@@ -14,6 +14,11 @@ import store from './store';
 Vue.use(iviewArea);
 
 /**
+ * @description 全局注册应用配置
+ */
+Vue.prototype.$runConfig = runConfig;
+
+/**
  * 表示当前的应用启动的时候是以mock的方式启动
  */
 if (runConfig.runConfig.mock) {

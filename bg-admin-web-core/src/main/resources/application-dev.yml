@@ -58,3 +58,9 @@ auth:
   # false表示用户单点登陆,true表示用户多点登录
   singleLanding: false
 
+# 文件上传的地址
+file:
+  upload:
+    path: D:/static/merJoinResource/
+
+
