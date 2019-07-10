@@ -7,6 +7,7 @@ import com.github.bg.admin.core.dao.*;
 import com.github.bg.admin.core.entity.*;
 import com.github.bg.admin.core.util.JsonUtils;
 import com.github.bg.admin.core.util.PageUtil;
+import com.github.bg.admin.core.util.RsaUtil;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,6 +49,9 @@ public class UserService {
 
     @Autowired
     private Auth authProvider;
+
+    @Value("${auth.privateKey}")
+    private String privateKey;
 
     /**
      * 功能描述：根据token和旧的密码来更新新的密码
@@ -286,6 +290,7 @@ public class UserService {
      * @return 返回登陆结果
      */
     public ReturnInfo login(String loginAccount, String loginPassword) {
+        loginPassword = RsaUtil.decrypt(loginPassword, privateKey);
         return authProvider.login(loginAccount, loginPassword);
     }
 

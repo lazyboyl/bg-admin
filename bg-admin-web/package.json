@@ -20,7 +20,8 @@
     "vue": "^2.5.2",
     "vue-i18n": "^7.8.0",
     "vue-router": "^3.0.1",
-    "vuex": "^2.2.1"
+    "vuex": "^2.2.1",
+    "jsencrypt": "^3.0.0-rc.1"
   },
   "devDependencies": {
     "mockjs": "^1.0.1-beta3",

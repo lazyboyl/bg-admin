@@ -79,7 +79,7 @@
           if (valid) {
             this.handleLogin({
               loginAccount: this.loginForm.loginAccount,
-              loginPassword: this.loginForm.loginPassword
+              loginPassword: this.$encruption(this.loginForm.loginPassword)
             }).then(res => {
               if (this.token != '' && res.code == 200) {
                 this.getUserInfo().then(res => {

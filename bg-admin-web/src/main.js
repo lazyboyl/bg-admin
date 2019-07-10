@@ -10,6 +10,19 @@ import 'iview/dist/styles/iview.css'
 import runConfig from './config/run.config';
 import iviewArea from 'iview-area';
 import store from './store';
+import JsEncrypt from 'jsencrypt';
+
+/**
+ * 配置全局的加密方法
+ * @param obj 需要加密的字符串
+ */
+Vue.prototype.$encruption = function (obj) {
+  let encrypt = new JsEncrypt();
+  encrypt.setPublicKey(
+    `-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDyKmfJhgAHEK0Yo6qOtFB8sSfYIZBJUyyXi1X7EgkZo3kmMOu6/uT7SwC9EnqbiMySJfAlvB200ZMIk6e1NQrPLZpc5VSuzSQ3NqdXOdbNnhXAUeME8IcsbscK9XP8BxldMhUhIK+3zovI1VCY2kLO6TMwEVvTdH+F1jW/WFkplwIDAQAB-----END PUBLIC KEY-----`
+  )
+  return encrypt.encrypt(obj);
+};
 
 Vue.use(iviewArea);
 
