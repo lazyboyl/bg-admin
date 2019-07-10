@@ -13,6 +13,17 @@ import store from './store';
 import JsEncrypt from 'jsencrypt';
 
 /**
+ * 生成唯一的uuid
+ * @returns {string}
+ */
+Vue.prototype.$uuid = function(){
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    let r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    return v.toString(16);
+  });
+};
+
+/**
  * 配置全局的加密方法
  * @param obj 需要加密的字符串
  */

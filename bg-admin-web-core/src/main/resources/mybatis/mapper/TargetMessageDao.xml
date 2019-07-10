@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.bg.admin.core.dao.TargetMessageDao">
+  <resultMap id="BaseResultMap" type="com.github.bg.admin.core.entity.TargetMessage">
+    <id column="targetMessageId" jdbcType="VARCHAR" property="targetMessageId" />
+    <result column="messageId" jdbcType="VARCHAR" property="messageId" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="userId" jdbcType="VARCHAR" property="userId" />
+    <result column="targetName" jdbcType="VARCHAR" property="targetName" />
+    <result column="sendTime" jdbcType="TIMESTAMP" property="sendTime" />
+    <result column="readeTime" jdbcType="TIMESTAMP" property="readeTime" />
+    <result column="removeState" jdbcType="VARCHAR" property="removeState" />
+  </resultMap>
+
+  <!-- 阅读消息以后的处理 -->
+  <update id="readMsg" >
+        update t_target_message set state = #{state} , readeTime = #{readeTime} where targetMessageId = #{targetMessageId}
+    </update>
+
+</mapper>

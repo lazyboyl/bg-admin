@@ -71,7 +71,9 @@ export default {
             commit('setMsg', res.msg);
           }else{
             localStorage.setItem('token',  res.obj.token);
+            localStorage.setItem('refreshToken',  res.obj.refreshToken);
             commit('setToken', res.obj.token);
+            commit('setRefreshToken', res.obj.refreshToken);
           }
           resolve(res);
         }).catch(err => {

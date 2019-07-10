@@ -7,6 +7,26 @@
           <div class="layout-logo">
             <img height="50px" width="50px" src="../../assets/logo.png"/>
           </div>
+          <div class="layout-nav" >
+            <Poptip
+              placement="bottom-end"
+              :transfer=true
+              ref="queryMsgPop"
+            >
+              <Badge dot :offset="[21,21]" :count="msgCount">
+                <a href="javascript:void(0)" >
+                  <Icon  type="ios-chatbubbles-outline" size="36"></Icon>
+                </a>
+              </Badge>
+              <div slot="content">
+                <template v-for="(msg,index) in msgList">
+                  <Divider v-if="index==0" />
+                  <p @click="showMsg(msg.title,msg.content,index,msg.targetMessageList[0].targetMessageId)">{{msg.content}}</p>
+                  <Divider />
+                </template>
+              </div>
+            </Poptip>
+          </div>
           <div class="layout-nav">
             <Dropdown @on-click="userAction">
               <a href="javascript:void(0)" style="color: white">
@@ -91,6 +111,8 @@
   import Language from '../../components/language';
   import {mapMutations, mapActions} from 'vuex';
   import changePassword from './changePassword';
+  import {queryUserMsg,readMsg} from '../../api/sys/msg/msg.api';
+  import io from 'socket.io-client'
 
   export default {
     components: {
@@ -100,7 +122,9 @@
     data() {
       return {
         local: localStorage.getItem("lang"),
-        showChangePassword: false
+        showChangePassword: false,
+        msgCount: 0,
+        msgList:[]
       }
     },
     methods: {
@@ -142,6 +166,47 @@
         this.$router.push({
           name: name
         })
+      },
+      showMsg(title,content,index,targetMessageId){
+        readMsg({targetMessageId}).then(res=>{
+          if (res.code == 200) {
+            this.$Modal.info({title,content});
+            this.msgList.splice(index,index+1)
+          } else {
+            this.$Message.error(res.msg)
+          }
+        });
+      },
+      initMsg() {
+        queryUserMsg({}).then(res => {
+          if (res.code == 200) {
+            this.msgCount = res.obj.length;
+            this.msgList = res.obj;
+          } else {
+            this.$Message.error(res.msg)
+          }
+        })
+      },
+      initSocketIo(socketToken,refreshToken){
+        let _this = this;
+        let opts = {
+          query: 'refreshToken=' + refreshToken + '&socketToken=' + socketToken
+        };
+        let socket = io.connect(this.$runConfig.runConfig.socketUrl,opts);
+        socket.on('connect', function () {
+          console.log("连接成功");
+        });
+        socket.on('push_event', function (data) {
+          console.log(data);
+          _this.initMsg();
+          _this.$Notice.info({
+            title: '消息通知',
+            desc: data.content
+          });
+        });
+        socket.on('disconnect', function () {
+          console.log("已经下线");
+        });
       }
     },
     watch: {
@@ -165,6 +230,11 @@
        * 监听滚动条的滚动事件
        */
       window.addEventListener('scroll', this.handleScroll)
+      /**
+       * 开启socket的监听
+       */
+      this.initSocketIo(this.$uuid(), localStorage.getItem("refreshToken"));
+      this.initMsg();
     }
   }
 </script>

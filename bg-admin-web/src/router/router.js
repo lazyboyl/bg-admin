@@ -89,6 +89,19 @@ export default [
         component: resolve => {
           require(['../view/sys/user/orgList.vue'], resolve);
         }
+      },
+      {
+        path: 'msgList',
+        name: 'msgList',
+        meta: {
+          icon: 'ios-chatbubbles',
+          title: '消息管理',
+          code:'system-manage-message',
+          requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
+        },
+        component: resolve => {
+          require(['../view/sys/msg/msgList.vue'], resolve);
+        }
       }
     ]
   }
