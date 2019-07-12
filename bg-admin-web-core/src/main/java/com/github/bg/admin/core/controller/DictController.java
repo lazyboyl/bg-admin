@@ -1,5 +1,6 @@
 package com.github.bg.admin.core.controller;
 
+import com.github.bg.admin.core.annotation.AuthController;
 import com.github.bg.admin.core.entity.Dict;
 import com.github.bg.admin.core.entity.ReturnInfo;
 import com.github.bg.admin.core.service.DictService;
@@ -112,6 +113,7 @@ public class DictController {
      */
     @ApiOperation(value = "获取数据字典列表")
     @PostMapping("queryDictList")
+    @AuthController(authorities={"system-admin"})
     public ReturnInfo queryDictList(@RequestParam(name = "search", required = false) String search,
                                     @RequestParam(name = "dictCode", required = false) String dictCode,
                                     @RequestParam(name = "pageSize") int pageSize,

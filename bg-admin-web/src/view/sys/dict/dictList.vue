@@ -131,11 +131,11 @@
           orderByValue
         }).then(res => {
           if (res.code == 200) {
-            this.$Message.success('新增数据字典成功')
+            this.$Message.success('查询数据字典成功')
             _this.total = res.obj.total
             _this.dictData = res.obj.rows
           } else {
-            this.$Message.error('新增数据字典失败,' + res.msg)
+            this.$Message.error('查询数据字典失败,' + res.msg)
           }
         });
       },
