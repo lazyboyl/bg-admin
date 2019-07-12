@@ -102,6 +102,19 @@ export default [
         component: resolve => {
           require(['../view/sys/msg/msgList.vue'], resolve);
         }
+      },
+      {
+        path: 'behaviorList',
+        name: 'behaviorList',
+        meta: {
+          icon: 'ios-browsers',
+          title: '行为日志',
+          code:'system-manage-behavior',
+          requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
+        },
+        component: resolve => {
+          require(['../view/sys/behavior/behaviorList.vue'], resolve);
+        }
       }
     ]
   }

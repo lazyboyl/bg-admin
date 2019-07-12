@@ -3,6 +3,8 @@ package com.github.bg.admin.core.filter;
 
 import com.github.bg.admin.core.auth.ReleaseUrl;
 import com.github.bg.admin.core.constant.SystemStaticConst;
+import com.github.bg.admin.core.dao.BehaviorLogDao;
+import com.github.bg.admin.core.entity.BehaviorLog;
 import com.github.bg.admin.core.entity.User;
 import com.github.bg.admin.core.util.RedisCache;
 import com.github.bg.admin.core.util.StringUtils;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 /**
  * @author linzf
@@ -23,6 +26,12 @@ import javax.servlet.http.HttpServletResponse;
 public class AuthInterceptor implements HandlerInterceptor {
 
     private Logger log = LoggerFactory.getLogger(AuthInterceptor.class);
+
+    /**
+     * 日志的dao
+     */
+    @Autowired
+    private BehaviorLogDao behaviorLogDao;
 
     /**
      * 操作redis的实现类
@@ -43,6 +52,9 @@ public class AuthInterceptor implements HandlerInterceptor {
         if (SystemStaticConst.ACTION_TYPE_OPTIONS.equals(httpServletRequest.getMethod())) {
             return true;
         }
+        BehaviorLog behaviorLog = new BehaviorLog();
+        behaviorLog.setActionDate(new Date());
+        behaviorLog.setActionMethod(actionUrl);
 
         /**
          * 判断当前的响应地址是否可以放行
@@ -71,13 +83,23 @@ public class AuthInterceptor implements HandlerInterceptor {
              */
             User user = redisCache.getObject(token + "_USER", User.class);
             if (user == null) {
+                behaviorLog.setActionUser("");
+                behaviorLog.setActionUserId("");
+                behaviorLogDao.insert(behaviorLog);
                 WriteUtil.write(httpServletResponse, SystemStaticConst.NOT_LOGIN, "用户未登录");
                 return false;
+            } else {
+                behaviorLog.setActionUser(user.getNickName());
+                behaviorLog.setActionUserId(user.getUserId());
+                behaviorLogDao.insert(behaviorLog);
             }
+        } else {
+            behaviorLog.setActionUser("");
+            behaviorLog.setActionUserId("");
+            behaviorLogDao.insert(behaviorLog);
         }
         return true;
     }
-
 
 
 }

@@ -18,6 +18,7 @@ public class WriteUtil {
 
     static Logger log = LoggerFactory.getLogger(WriteUtil.class);
 
+
     /**
      * 功能描述：异常信息处理
      *

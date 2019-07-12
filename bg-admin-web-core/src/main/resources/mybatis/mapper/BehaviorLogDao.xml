@@ -2,13 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.github.bg.admin.core.dao.BehaviorLogDao">
   <resultMap id="BaseResultMap" type="com.github.bg.admin.core.entity.BehaviorLog">
-    <!--
-      WARNING - @mbg.generated
-    -->
     <id column="behaviorLogId" jdbcType="BIGINT" property="behaviorLogId" />
     <result column="actionMethod" jdbcType="VARCHAR" property="actionMethod" />
     <result column="actionDate" jdbcType="TIMESTAMP" property="actionDate" />
     <result column="actionUser" jdbcType="VARCHAR" property="actionUser" />
     <result column="actionUserId" jdbcType="VARCHAR" property="actionUserId" />
   </resultMap>
+
+  <!-- 获取行为日志列表 -->
+  <select id="queryBehaviorLogList" resultMap="BaseResultMap">
+    select * from t_behavior_log where 1=1
+    <if test="search!=null and search != ''">
+      and (
+      actionMethod like concat('%',#{search},'%') or
+      actionUser like concat('%',#{search},'%')
+      )
+    </if>
+  </select>
+
 </mapper>
