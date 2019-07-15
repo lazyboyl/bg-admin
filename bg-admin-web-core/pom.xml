@@ -128,7 +128,7 @@
 			<plugin>
 				<groupId>com.github.lazyBoyl</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<version>1.0-release</version>
+				<version>1.1-release</version>
 				<configuration>
 					<!-- 本地package以后生成的jar包的完整路径 -->
 					<jarTargetPath>${basedir}/target/bg-admin-web-core.jar</jarTargetPath>
@@ -140,7 +140,7 @@
 					<containerRunShare>/app/www/logs/bg-admin-web-core/log/:/app/www/logs/bg-admin-web-core/log/</containerRunShare>
 					<!-- 该工程启动的时候的端口映射,多个端口那就对应着启动多少个容器 -->
 					<containerRunPorts>
-						<containerRunPort>8288:8288</containerRunPort>
+						<containerRunPort>8288:8288,9099:9099</containerRunPort>
 					</containerRunPorts>
 					<options>
 						<!-- 服务器的ip,账号,密码 -->
