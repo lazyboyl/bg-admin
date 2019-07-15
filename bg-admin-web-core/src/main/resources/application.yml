@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: prod
 
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
