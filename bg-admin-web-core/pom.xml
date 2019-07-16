@@ -142,6 +142,8 @@
 					<containerRunPorts>
 						<containerRunPort>8288:8288,9099:9099</containerRunPort>
 					</containerRunPorts>
+					<!-- 采用与宿主机一样的IP的形式 -->
+					<netType>host</netType>
 					<options>
 						<!-- 服务器的ip,账号,密码 -->
 						<option>
