@@ -12,6 +12,8 @@ File Encoding         : 65001
 
 Date: 2019-07-15 10:58:28
 */
+CREATE DATABASE vcm CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 use vcm;
 
 SET FOREIGN_KEY_CHECKS=0;
