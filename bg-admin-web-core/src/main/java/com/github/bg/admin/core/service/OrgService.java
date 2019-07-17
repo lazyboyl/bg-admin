@@ -23,7 +23,7 @@ import java.util.Map;
  * 类描述：组织架构的service
  */
 @Service
-@Transactional(rollbackFor = {IllegalArgumentException.class})
+@Transactional(rollbackFor = {Exception.class})
 public class OrgService {
 
     @Autowired

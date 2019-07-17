@@ -29,7 +29,7 @@ import java.util.Map;
  * 类描述：角色管理的service
  */
 @Service
-@Transactional(rollbackFor = {IllegalArgumentException.class})
+@Transactional(rollbackFor = {Exception.class})
 public class RoleService {
 
     @Autowired

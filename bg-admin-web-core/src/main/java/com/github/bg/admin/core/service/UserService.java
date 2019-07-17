@@ -26,7 +26,7 @@ import java.util.Map;
  * 类描述：用户的service类的实现
  */
 @Service
-@Transactional(rollbackFor = {IllegalArgumentException.class})
+@Transactional(rollbackFor = {Exception.class})
 public class UserService {
 
     @Autowired

@@ -28,7 +28,7 @@ import java.util.Map;
  * 类描述：菜单的service实现类
  */
 @Service
-@Transactional(rollbackFor = {IllegalArgumentException.class})
+@Transactional(rollbackFor = {Exception.class})
 public class TreeService {
 
     @Autowired

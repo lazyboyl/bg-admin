@@ -10,6 +10,7 @@ import com.github.bg.admin.core.util.StringUtils;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.Map;
  * 类描述：数据字典的service类
  */
 @Service
+@Transactional(rollbackFor = {Exception.class})
 public class DictService {
 
     /**

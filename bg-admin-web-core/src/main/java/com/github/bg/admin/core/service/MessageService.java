@@ -25,7 +25,7 @@ import java.util.List;
  * 类描述：消息的service
  */
 @Service
-@Transactional(rollbackFor = {IllegalArgumentException.class})
+@Transactional(rollbackFor = {Exception.class})
 public class MessageService {
 
     /**

@@ -9,6 +9,7 @@ import com.github.bg.admin.core.util.PageUtil;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
  * 类描述：行为日志的service
  */
 @Service
+@Transactional(rollbackFor = {Exception.class})
 public class BehaviorLogService {
 
     @Autowired
