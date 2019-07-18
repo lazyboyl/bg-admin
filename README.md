@@ -9,7 +9,7 @@ BAG管理系统是采用前后端分离的方式进行开发的，前端基于iv
 5. 消息管理【系统推送的消息的维护】
 6. 行为日志【系统操作行为的查询】
 
-前端工程为:bg-admin-web，后端工程为：bg-admin-web-core，相关文档所在位置为：bg-admin-core.
+前端工程为:bg-admin-web，后端工程为：bg-admin-web-core，相关文档所在位置为：bg-admin-doc.
 
 # BGA快速开始
 在我的CSDN的《[如何快速快速启动bg-admin这套框架](https://blog.csdn.net/linzhefeng89/article/details/96207519)》这篇博文中为大家专门讲解了如何快速开始。
