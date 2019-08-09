@@ -8,13 +8,17 @@ BAG管理系统是采用前后端分离的方式进行开发的，前端基于iv
 4. 用户组织【系统的组织和用户的维护】
 5. 消息管理【系统推送的消息的维护】
 6. 行为日志【系统操作行为的查询】
+7. 自动生成前后端代码的maven插件
 
-前端工程为:bg-admin-web，后端工程为：bg-admin-web-core，相关文档所在位置为：bg-admin-doc.
+前端工程为:bg-admin-web，后端工程为：bg-admin-web-core，相关文档所在位置为：bg-admin-doc，自动生成代码的插件位置为：bg-admin-code-generator.
 
 # BGA快速开始
 在我的CSDN的《[如何快速快速启动bg-admin这套框架](https://blog.csdn.net/linzhefeng89/article/details/96207519)》这篇博文中为大家专门讲解了如何快速开始。
 # BGA系列博客地址
 若大家有兴趣从头开始编写bg-admin这套前后端分离的框架，大家可以去访问我的《[spring boot 与 iview实现前后端分离架构](https://blog.csdn.net/linzhefeng89/column/info/37409)》这篇专栏，里面给大家讲解了从如何新建一个工程到最后的生产环境部署的完整过程。
+## BGA代码自动生成maven插件
+若是一些简单的增删改的模块，推荐大家直接使用bg-admin-code-generator这个插件，可以秒级快速生成我们需要的增删改的前后端所需要的所有代码，该插件的介绍的地址是：
+[spring boot 与 iview 前后端分离架构之前后端代码自动生成（番外篇）](https://blog.csdn.net/linzhefeng89/article/details/98937523)
 ## BGA相关章节列表
 1. [spring boot 与 iview 前后端分离架构之前端工程的构建以及IVIEW的引入（一）](https://blog.csdn.net/linzhefeng89/article/details/89483368)
 2. [spring boot 与 iview 前后端分离架构之登陆页面以及国际化的实现（二）](https://blog.csdn.net/linzhefeng89/article/details/89501739)
@@ -52,6 +56,7 @@ BAG管理系统是采用前后端分离的方式进行开发的，前端基于iv
 34. [spring boot 与 iview 前后端分离架构之行为日志的实现（三十四）](https://blog.csdn.net/linzhefeng89/article/details/95255010)
 35. [spring boot 与 iview 前后端分离架构之权限注解的实现（三十五）](https://blog.csdn.net/linzhefeng89/article/details/95255156)
 36. [spring boot 与 iview 前后端分离架构之开发环境基于docker的部署的实现（三十六）](https://blog.csdn.net/linzhefeng89/article/details/95255793)
+37. [spring boot 与 iview 前后端分离架构之前后端代码自动生成（番外篇）](https://blog.csdn.net/linzhefeng89/article/details/98937523)
 
 
 
