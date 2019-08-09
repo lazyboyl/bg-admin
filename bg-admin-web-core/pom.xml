@@ -1,168 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>com.github.bg.admin</groupId>
-	<artifactId>bg-admin-web-core</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>bg-admin-web-core</name>
-	<description>这是一个后端的springboot权限架构工程</description>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.github.bg.admin</groupId>
+    <artifactId>bg-admin-web-core</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>bg-admin-web-core</name>
+    <description>这是一个后端的springboot权限架构工程</description>
 
-	<properties>
-		<java.version>1.8</java.version>
-		<org.mapstruct.version>1.1.0.Final</org.mapstruct.version>
-	</properties>
+    <properties>
+        <java.version>1.8</java.version>
+        <org.mapstruct.version>1.1.0.Final</org.mapstruct.version>
+    </properties>
 
-	<dependencies>
+    <dependencies>
 
-		<dependency>
-			<groupId>com.corundumstudio.socketio</groupId>
-			<artifactId>netty-socketio</artifactId>
-			<version>1.7.7</version>
-		</dependency>
+        <dependency>
+            <groupId>com.corundumstudio.socketio</groupId>
+            <artifactId>netty-socketio</artifactId>
+            <version>1.7.7</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-		<!-- 引入redis -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
-		</dependency>
+        <!-- 引入redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 
-		<!--通用 Mapper-->
-		<dependency>
-			<groupId>tk.mybatis</groupId>
-			<artifactId>mapper-spring-boot-starter</artifactId>
-			<version>2.0.4</version>
-		</dependency>
+        <!--通用 Mapper-->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>2.0.4</version>
+        </dependency>
 
-		<!--连接池-->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>1.1.9</version>
-		</dependency>
-		<!--数据库驱动-->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
+        <!--连接池-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.9</version>
+        </dependency>
+        <!--数据库驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
 
-		<!--分页插件-->
-		<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper-spring-boot-starter</artifactId>
-			<version>1.2.4</version>
-		</dependency>
+        <!--分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.4</version>
+        </dependency>
 
-		<!-- swagger插件 -->
-		<dependency>
-			<groupId>com.didispace</groupId>
-			<artifactId>spring-boot-starter-swagger</artifactId>
-			<version>1.2.0.RELEASE</version>
-		</dependency>
+        <!-- swagger插件 -->
+        <dependency>
+            <groupId>com.didispace</groupId>
+            <artifactId>spring-boot-starter-swagger</artifactId>
+            <version>1.2.0.RELEASE</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-		<!--mapStruct依赖-->
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct-jdk8</artifactId>
-			<version>${org.mapstruct.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct-processor</artifactId>
-			<version>${org.mapstruct.version}</version>
-			<scope>provided</scope>
-		</dependency>
+        <!--mapStruct依赖-->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${org.mapstruct.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
 
-	</dependencies>
+    </dependencies>
 
-	<build>
-		<finalName>bg-admin-web-core</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+    <build>
+        <finalName>bg-admin-web-core</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.bg.admin</groupId>
+                <artifactId>bg-admin-code-generator</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <configuration>
+                    <!-- 数据库的连接信息分别是：地址、驱动名称、账、密码 -->
+                    <jdbcUrl>jdbc:mysql://127.0.0.1:3306/vcm?serverTimezone=Asia/Shanghai</jdbcUrl>
+                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <userName>root</userName>
+                    <password>123456</password>
+                    <!-- 后端java代码生成的包的所在的位置 -->
+                    <webCorePath>com.github.bg.admin.core</webCorePath>
+                    <!-- 后端mybatis生成的位置 -->
+                    <mybatisBasePath>/resources/mybatis/mapper</mybatisBasePath>
+                    <!-- 作者 -->
+                    <author>linzf</author>
+                    <!-- 表的名称，在同一个mysql中的不同的数据库不能存在名字相同的表，否则会导致生成代码的时候会将两张表的字段全部生成出来 -->
+                    <tableName>t_test</tableName>
+                    <!-- 实体类名称 -->
+                    <beanName>TTest</beanName>
+                    <!-- 前端工程所在的位置 -->
+                    <webPath>E:\idea-work\bg-admin\bg-admin-web</webPath>
+                    <!-- 当前生成的前端的列表需要挂在那个路由节点底下，sys 表示会定位到router.js的 name: 'sys'这个节点底下 -->
+                    <routerNode>sys</routerNode>
+                    <!-- 生成的权限的sql脚本的存放目录，默认生成的脚本里面管理员的角色ID为1 -->
+                    <sqlPath>E:\idea-work\bg-admin\bg-admin-web-core\doc</sqlPath>
+                </configuration>
+            </plugin>
 
-			<plugin>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.6</version>
-				<configuration>
-					<configurationFile>
-						${basedir}/src/main/resources/generator/generatorConfig.xml
-					</configurationFile>
-					<overwrite>true</overwrite>
-					<verbose>true</verbose>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.27</version>
-					</dependency>
-					<dependency>
-						<groupId>tk.mybatis</groupId>
-						<artifactId>mapper</artifactId>
-						<version>4.0.0</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>com.github.lazyBoyl</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>1.1-release</version>
-				<configuration>
-					<!-- 本地package以后生成的jar包的完整路径 -->
-					<jarTargetPath>${basedir}/target/bg-admin-web-core.jar</jarTargetPath>
-					<!-- centos服务器存放我们的dockerFile文件和相应的jar包的文件夹的路径 -->
-					<dockerImagesPath>/home/app/docker/bg-admin-web-core/</dockerImagesPath>
-					<!-- 创建镜像的dockerFile的文件的路径 -->
-					<dockerFilePath>${basedir}/dockerFile/Dockerfile</dockerFilePath>
-					<!-- 该工程启动的时候的文件挂载 -->
-					<containerRunShare>/app/www/logs/bg-admin-web-core/log/:/app/www/logs/bg-admin-web-core/log/</containerRunShare>
-					<!-- 该工程启动的时候的端口映射,多个端口那就对应着启动多少个容器 -->
-					<containerRunPorts>
-						<containerRunPort>8288:8288,9099:9099</containerRunPort>
-					</containerRunPorts>
-					<!-- 采用与宿主机一样的IP的形式 -->
-					<netType>host</netType>
-					<options>
-						<!-- 服务器的ip,账号,密码 -->
-						<option>
-							10.10.10.113:22,root,123456
-						</option>
-					</options>
-				</configuration>
-				<executions>
-					<execution>
-						<!-- 设置该插件的执行的生命周期为package完成以后执行,若不想绑定就将executions这块的代码注释了，后面就不会在打包好以后再去执行docker插件的操作 -->
-						<phase>package</phase>
-						<goals>
-							<!--phase与goal是绑定的关系，当g到达了phase阶段的时候就会去执行goal，此处的值固定为dockerMavenPlugin，因为插件给予他的名字就是dockerMavenPlugin -->
-							<goal>dockerMavenPlugin</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.6</version>
+                <configuration>
+                    <configurationFile>
+                        ${basedir}/src/main/resources/generator/generatorConfig.xml
+                    </configurationFile>
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.27</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>tk.mybatis</groupId>
+                        <artifactId>mapper</artifactId>
+                        <version>4.0.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>com.github.lazyBoyl</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.1-release</version>
+                <configuration>
+                    <!-- 本地package以后生成的jar包的完整路径 -->
+                    <jarTargetPath>${basedir}/target/bg-admin-web-core.jar</jarTargetPath>
+                    <!-- centos服务器存放我们的dockerFile文件和相应的jar包的文件夹的路径 -->
+                    <dockerImagesPath>/home/app/docker/bg-admin-web-core/</dockerImagesPath>
+                    <!-- 创建镜像的dockerFile的文件的路径 -->
+                    <dockerFilePath>${basedir}/dockerFile/Dockerfile</dockerFilePath>
+                    <!-- 该工程启动的时候的文件挂载 -->
+                    <containerRunShare>/app/www/logs/bg-admin-web-core/log/:/app/www/logs/bg-admin-web-core/log/
+                    </containerRunShare>
+                    <!-- 该工程启动的时候的端口映射,多个端口那就对应着启动多少个容器 -->
+                    <containerRunPorts>
+                        <containerRunPort>8288:8288,9099:9099</containerRunPort>
+                    </containerRunPorts>
+                    <!-- 采用与宿主机一样的IP的形式 -->
+                    <netType>host</netType>
+                    <options>
+                        <!-- 服务器的ip,账号,密码 -->
+                        <option>
+                            10.10.10.113:22,root,123456
+                        </option>
+                    </options>
+                </configuration>
+                <executions>
+                    <execution>
+                        <!-- 设置该插件的执行的生命周期为package完成以后执行,若不想绑定就将executions这块的代码注释了，后面就不会在打包好以后再去执行docker插件的操作 -->
+                        <phase>package</phase>
+                        <goals>
+                            <!--phase与goal是绑定的关系，当g到达了phase阶段的时候就会去执行goal，此处的值固定为dockerMavenPlugin，因为插件给予他的名字就是dockerMavenPlugin -->
+                            <goal>dockerMavenPlugin</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

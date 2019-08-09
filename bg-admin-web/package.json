@@ -22,7 +22,8 @@
     "vue-router": "^3.0.1",
     "vuex": "^2.2.1",
     "socket.io-client": "^2.2.0",
-    "jsencrypt": "^3.0.0-rc.1"
+    "jsencrypt": "^3.0.0-rc.1",
+    "vue-easy-print":"^0.0.8"
   },
   "devDependencies": {
     "mockjs": "^1.0.1-beta3",
