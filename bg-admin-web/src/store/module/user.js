@@ -36,6 +36,9 @@ export default {
     setToken(state, token) {
       state.token = token;
     },
+    setRefreshToken(state, refreshToken) {
+      state.refreshToken = refreshToken;
+    },
     setUserId(state, userId){
       state.userId = userId;
     },
