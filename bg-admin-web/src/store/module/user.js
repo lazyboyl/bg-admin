@@ -10,7 +10,8 @@ export default {
     headImg: localStorage.getItem('headImg') ? localStorage.getItem('headImg') : '',
     userId: localStorage.getItem('userId') ? localStorage.getItem('userId') : '',
     menuList: [],// 右侧的显示的菜单栏的数据
-    access:localStorage.getItem('access') ? localStorage.getItem('access') : ''// 登录成功以后，当前用户拥有的权限的数据
+    access:localStorage.getItem('access') ? localStorage.getItem('access') : '',// 登录成功以后，当前用户拥有的权限的数据
+    expireDate: '' // 过期时间
   },
   getters: {
     token(state, getters, rootState) {
@@ -44,6 +45,9 @@ export default {
     },
     setAccess(state,access){
       state.access = access;
+    },
+    setExpireDate(state,expireDate){
+      state.expireDate = expireDate;
     }
   },
   actions: {
@@ -61,6 +65,7 @@ export default {
         commit('setLoginAccount',  '');
         localStorage.setItem('access', []);
         commit('setAccess',  []);
+        commit('setExpireDate', '');
       })
     },
     handleLogin ({ commit }, {loginAccount, loginPassword}) {
@@ -77,6 +82,7 @@ export default {
             localStorage.setItem('refreshToken',  res.obj.refreshToken);
             commit('setToken', res.obj.token);
             commit('setRefreshToken', res.obj.refreshToken);
+            commit('setExpireDate', new Date().getTime() + res.obj.expiresIn * 1000);
           }
           resolve(res);
         }).catch(err => {

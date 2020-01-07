@@ -41,23 +41,49 @@ export default [
     }
   },
   {
+    path: '/test',
+    name: 'test',
+    component: main,
+    meta: {
+      icon: 'ios-construct',
+      title: '系统管理',
+      code: 'system-manage-test',
+      requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
+    },
+    children: [
+      {
+        path: 'testList',
+        name: 'testList',
+        meta: {
+          icon: 'ios-paper',
+          title: '字典维护',
+          code: 'system-manage-test-list',
+          requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
+        },
+        component: resolve => {
+          require(['../view/sys/tTest/tTestList.vue'], resolve);
+        }
+      }
+    ]
+  },
+  {
     path: '/sys',
     name: 'sys',
     component: main,
     meta: {
       icon: 'ios-construct',
       title: '系统管理',
-      code:'system-manage',
+      code: 'system-manage',
       requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
     },
-    children:[
+    children: [
       {
         path: 'dictList',
         name: 'dictList',
         meta: {
           icon: 'ios-paper',
           title: '字典维护',
-          code:'system-manage-dict',
+          code: 'system-manage-dict',
           requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
         },
         component: resolve => {
@@ -70,7 +96,7 @@ export default [
         meta: {
           icon: 'md-git-network',
           title: '菜单管理',
-          code:'system-manage-tree',
+          code: 'system-manage-tree',
           requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
         },
         component: resolve => {
@@ -83,7 +109,7 @@ export default [
         meta: {
           icon: 'ios-cog',
           title: '角色管理',
-          code:'system-manage-role',
+          code: 'system-manage-role',
           requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
         },
         component: resolve => {
@@ -96,7 +122,7 @@ export default [
         meta: {
           icon: 'ios-people',
           title: '用户组织',
-          code:'system-manage-user',
+          code: 'system-manage-user',
           requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
         },
         component: resolve => {
@@ -109,7 +135,7 @@ export default [
         meta: {
           icon: 'ios-chatbubbles',
           title: '消息管理',
-          code:'system-manage-message',
+          code: 'system-manage-message',
           requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
         },
         component: resolve => {
@@ -122,7 +148,7 @@ export default [
         meta: {
           icon: 'ios-browsers',
           title: '行为日志',
-          code:'system-manage-behavior',
+          code: 'system-manage-behavior',
           requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
         },
         component: resolve => {

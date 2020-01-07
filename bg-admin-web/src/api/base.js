@@ -1,6 +1,7 @@
 import axios from '../lib/api.request';
 import qs from 'qs';
 import config from '../config/run.config';
+import userStore from '../store/module/user';
 
 let Axios
 if (config.runConfig.mock) {
@@ -24,12 +25,16 @@ export function fetch(url, params = {}) {
     })
   } else {
     return new Promise((resolve, reject) => {
-      // 如果是在刷新token，那么这时候其他请求将会被500毫秒以后再次触发
+      // 如果是在刷新token，那么这时候其他请求将会被1000毫秒以后再次触发
       if(isRefresh){
         setTimeout(()=>{
-          fetch(url,params);
+          axiosPost(url,params,resolve);
         },1000)
       }else{
+        // 请求之前判断当前token是否已经过期，若过期则后续的请求将被挂起。
+        if(userStore.state.expireDate !='' && new Date().getTime() - userStore.state.expireDate > 0){
+          isRefresh = true;
+        }
         axiosPost(url,params,resolve)
       }
     });
