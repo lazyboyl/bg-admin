@@ -41,32 +41,6 @@ export default [
     }
   },
   {
-    path: '/test',
-    name: 'test',
-    component: main,
-    meta: {
-      icon: 'ios-construct',
-      title: '系统管理',
-      code: 'system-manage-test',
-      requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
-    },
-    children: [
-      {
-        path: 'testList',
-        name: 'testList',
-        meta: {
-          icon: 'ios-paper',
-          title: '字典维护',
-          code: 'system-manage-test-list',
-          requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
-        },
-        component: resolve => {
-          require(['../view/sys/tTest/tTestList.vue'], resolve);
-        }
-      }
-    ]
-  },
-  {
     path: '/sys',
     name: 'sys',
     component: main,

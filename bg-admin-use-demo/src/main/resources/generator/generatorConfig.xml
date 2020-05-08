@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <!-- 是否区分大小写，默认值 false -->
+            <property name="caseSensitive" value="true"/>
+            <!-- 是否强制生成注解，默认 false，如果设置为 true，不管数据库名和字段名是否一致，都会生成注解（包含 @Table 和 @Column） -->
+            <property name="forceAnnotation" value="true"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/vcm?characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.bg.admin.use.demo.entity" targetProject="src/main/java">
+
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="demo/mapper" targetProject="src/main/resources" />
+
+        <javaClientGenerator targetPackage="com.bg.admin.use.demo.dao" targetProject="src/main/java"  type="XMLMAPPER"/>
+
+        <table tableName="t_test" domainObjectName="TTest" mapperName="TTestDao">
+            <!-- 字段属性是否驼峰展示，true为驼峰展示 -->
+            <property name="useActualColumnNames" value="true"></property>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

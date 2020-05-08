@@ -97,8 +97,13 @@
         <finalName>bg-admin-web-core</finalName>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.bg.admin</groupId>
@@ -153,44 +158,44 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <plugin>
-                <groupId>com.github.lazyBoyl</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>1.1-release</version>
-                <configuration>
-                    <!-- 本地package以后生成的jar包的完整路径 -->
-                    <jarTargetPath>${basedir}/target/bg-admin-web-core.jar</jarTargetPath>
-                    <!-- centos服务器存放我们的dockerFile文件和相应的jar包的文件夹的路径 -->
-                    <dockerImagesPath>/home/app/docker/bg-admin-web-core/</dockerImagesPath>
-                    <!-- 创建镜像的dockerFile的文件的路径 -->
-                    <dockerFilePath>${basedir}/dockerFile/Dockerfile</dockerFilePath>
-                    <!-- 该工程启动的时候的文件挂载 -->
-                    <containerRunShare>/app/www/logs/bg-admin-web-core/log/:/app/www/logs/bg-admin-web-core/log/
-                    </containerRunShare>
-                    <!-- 该工程启动的时候的端口映射,多个端口那就对应着启动多少个容器 -->
-                    <containerRunPorts>
-                        <containerRunPort>8288:8288,9099:9099</containerRunPort>
-                    </containerRunPorts>
-                    <!-- 采用与宿主机一样的IP的形式 -->
-                    <netType>host</netType>
-                    <options>
-                        <!-- 服务器的ip,账号,密码 -->
-                        <option>
-                            10.10.10.113:22,root,123456
-                        </option>
-                    </options>
-                </configuration>
-                <executions>
-                    <execution>
-                        <!-- 设置该插件的执行的生命周期为package完成以后执行,若不想绑定就将executions这块的代码注释了，后面就不会在打包好以后再去执行docker插件的操作 -->
-                        <phase>package</phase>
-                        <goals>
-                            <!--phase与goal是绑定的关系，当g到达了phase阶段的时候就会去执行goal，此处的值固定为dockerMavenPlugin，因为插件给予他的名字就是dockerMavenPlugin -->
-                            <goal>dockerMavenPlugin</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>com.github.lazyBoyl</groupId>-->
+<!--                <artifactId>docker-maven-plugin</artifactId>-->
+<!--                <version>1.1-release</version>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash; 本地package以后生成的jar包的完整路径 &ndash;&gt;-->
+<!--                    <jarTargetPath>${basedir}/target/bg-admin-web-core.jar</jarTargetPath>-->
+<!--                    &lt;!&ndash; centos服务器存放我们的dockerFile文件和相应的jar包的文件夹的路径 &ndash;&gt;-->
+<!--                    <dockerImagesPath>/home/app/docker/bg-admin-web-core/</dockerImagesPath>-->
+<!--                    &lt;!&ndash; 创建镜像的dockerFile的文件的路径 &ndash;&gt;-->
+<!--                    <dockerFilePath>${basedir}/dockerFile/Dockerfile</dockerFilePath>-->
+<!--                    &lt;!&ndash; 该工程启动的时候的文件挂载 &ndash;&gt;-->
+<!--                    <containerRunShare>/app/www/logs/bg-admin-web-core/log/:/app/www/logs/bg-admin-web-core/log/-->
+<!--                    </containerRunShare>-->
+<!--                    &lt;!&ndash; 该工程启动的时候的端口映射,多个端口那就对应着启动多少个容器 &ndash;&gt;-->
+<!--                    <containerRunPorts>-->
+<!--                        <containerRunPort>8288:8288,9099:9099</containerRunPort>-->
+<!--                    </containerRunPorts>-->
+<!--                    &lt;!&ndash; 采用与宿主机一样的IP的形式 &ndash;&gt;-->
+<!--                    <netType>host</netType>-->
+<!--                    <options>-->
+<!--                        &lt;!&ndash; 服务器的ip,账号,密码 &ndash;&gt;-->
+<!--                        <option>-->
+<!--                            10.10.10.113:22,root,123456-->
+<!--                        </option>-->
+<!--                    </options>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        &lt;!&ndash; 设置该插件的执行的生命周期为package完成以后执行,若不想绑定就将executions这块的代码注释了，后面就不会在打包好以后再去执行docker插件的操作 &ndash;&gt;-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            &lt;!&ndash;phase与goal是绑定的关系，当g到达了phase阶段的时候就会去执行goal，此处的值固定为dockerMavenPlugin，因为插件给予他的名字就是dockerMavenPlugin &ndash;&gt;-->
+<!--                            <goal>dockerMavenPlugin</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

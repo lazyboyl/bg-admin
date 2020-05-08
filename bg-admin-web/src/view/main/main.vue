@@ -75,7 +75,7 @@
                   {{item.meta.title}}
                 </template>
                 <template v-for="childrenItem in item.children">
-                  <MenuItem :name=childrenItem.meta.code :to="item.path+'/'+childrenItem.path">
+                  <MenuItem :name=childrenItem.meta.code :to="item.path+'/'+childrenItem.path" >
                     <Icon :type=childrenItem.meta.icon>
                     </Icon>
                     {{childrenItem.meta.title}}

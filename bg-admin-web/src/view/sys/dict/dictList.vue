@@ -12,7 +12,7 @@
       </div>
       <div style="clear: both;"></div>
       <div style="margin-top: 10px;">
-        <Table ref="dictTable" @on-sort-change="onSortChange" :columns="columns" :data="dictData" :height="tableHeight">
+        <Table border  ref="dictTable" @on-sort-change="onSortChange" :columns="columns" :data="dictData" :height="tableHeight">
           <template slot-scope="{ row, index }" slot="dictCode">
             <Input type="text" v-model="editDictCode" v-if="editIndex === index"/>
             <span v-else>{{ row.dictCode }}</span>
@@ -197,6 +197,7 @@
       // 初始化完成组件的时候执行以下的逻辑
       this.handleSearch();
       this.tableHeight = window.innerHeight - this.$refs.dictTable.$el.offsetTop - 270
+      console.log(this.$route.meta.code)
     }
   }
 

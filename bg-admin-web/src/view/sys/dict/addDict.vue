@@ -1,18 +1,28 @@
 <template>
   <Modal v-model="show" title="新增字典" @on-ok="ok" :loading="loading" :mask-closable="false">
-    <Form ref="dictForm" :model="dictForm" :rules="dictFormRule">
-      <FormItem label="字典类型" prop="dictType">
-        <Input type="text" :maxlength=50 v-model="dictForm.dictType" placeholder="请输入字典类型"/>
-      </FormItem>
-      <FormItem label="字典编码" prop="dictCode">
-        <Input type="text" :maxlength=50 v-model="dictForm.dictCode" placeholder="请输入字典编码"/>
-      </FormItem>
-      <FormItem label="字典文本" prop="dictText">
-        <Input type="text" :maxlength=50 v-model="dictForm.dictText" placeholder="请输入字典文本"/>
-      </FormItem>
-      <FormItem label="字典数值" prop="dictValue">
-        <Input type="text" :maxlength=50 v-model="dictForm.dictValue" placeholder="请输入字典数值"/>
-      </FormItem>
+    <Form ref="dictForm" :model="dictForm" :rules="dictFormRule" :label-width="80">
+      <Row :gutter="16">
+        <Col span="12">
+          <FormItem label="字典类型" prop="dictType">
+            <Input type="text" :maxlength=50 v-model="dictForm.dictType" placeholder="请输入字典类型"/>
+          </FormItem>
+        </Col>
+        <Col span="12">
+          <FormItem label="字典编码" prop="dictCode">
+            <Input type="text" :maxlength=50 v-model="dictForm.dictCode" placeholder="请输入字典编码"/>
+          </FormItem>
+        </Col>
+        <Col span="12">
+          <FormItem label="字典文本" prop="dictText">
+            <Input type="text" :maxlength=50 v-model="dictForm.dictText" placeholder="请输入字典文本"/>
+          </FormItem>
+        </Col>
+        <Col span="12">
+          <FormItem label="字典数值" prop="dictValue">
+            <Input type="text" :maxlength=50 v-model="dictForm.dictValue" placeholder="请输入字典数值"/>
+          </FormItem>
+        </Col>
+      </Row>
     </Form>
   </Modal>
 </template>
