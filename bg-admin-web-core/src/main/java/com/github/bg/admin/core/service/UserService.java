@@ -8,6 +8,8 @@ import com.github.bg.admin.core.entity.*;
 import com.github.bg.admin.core.util.JsonUtils;
 import com.github.bg.admin.core.util.PageUtil;
 import com.github.bg.admin.core.util.RsaUtil;
+import com.github.lazyboyl.chat.core.entity.ChatUser;
+import com.github.lazyboyl.chat.core.service.OnlineChatUserService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -52,6 +54,9 @@ public class UserService {
 
     @Value("${auth.privateKey}")
     private String privateKey;
+
+    @Autowired
+    private OnlineChatUserService onlineChatUserService;
 
     /**
      * 功能描述：根据token和旧的密码来更新新的密码
@@ -235,6 +240,13 @@ public class UserService {
         userOrg.setOrgId(Integer.parseInt(orgId));
         userOrg.setUserId(user.getUserId());
         userOrgDao.insert(userOrg);
+        // 同步数据到聊天中心
+        ChatUser chatUser = new ChatUser();
+        chatUser.setNickName(user.getNickName());
+        chatUser.setAvatar(user.getHeadImg());
+        chatUser.setUserName(user.getLoginAccount());
+        chatUser.setSyncUserId(user.getUserId());
+        onlineChatUserService.addChatUser(chatUser);
         return new ReturnInfo(SystemStaticConst.SUCCESS, "用户创建成功");
     }
 

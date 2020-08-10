@@ -14,6 +14,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
+import java.util.regex.Pattern;
 
 /**
  * @author linzf
@@ -39,7 +40,12 @@ public class AuthControllerInterceptor implements HandlerInterceptor {
         if (SystemStaticConst.ACTION_TYPE_OPTIONS.equals(httpServletRequest.getMethod())) {
             return true;
         }
+        String jsPattern = ".*.js";
+        String cssPattern = ".*.css";
         String actionUrl = httpServletRequest.getServletPath();
+        if(Pattern.matches(jsPattern, actionUrl)||Pattern.matches(cssPattern, actionUrl)){
+            return true;
+        }
         // 判断当前的响应地址是否可以放行
         String releasePath = releaseUrl.getReleaseUrl();
         if (releasePath.indexOf(actionUrl) == -1) {

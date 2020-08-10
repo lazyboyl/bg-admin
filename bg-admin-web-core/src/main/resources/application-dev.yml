@@ -6,6 +6,7 @@ logging:
   level:
     root: INFO
     com.github.bg.admin.core: DEBUG
+    com.github.lazyboyl.chat.core: DEBUG
 
 spring:
   redis:
@@ -54,7 +55,7 @@ auth:
   # refreshToken过期时间
   refreshTokenExpire: 7200
   # 放行的权限列表，采用小写的冒号分隔
-  releaseUrl: /user/refreshToken
+  releaseUrl: /swagger-ui.html:/user/refreshToken
   # false表示用户单点登陆,true表示用户多点登录
   singleLanding: false
   # 私钥的key
@@ -86,6 +87,13 @@ socketio:
   pingTimeout: 6000000
   # Ping消息间隔（毫秒），默认25秒。客户端向服务器发送一条心跳消息间隔
   pingInterval: 25000
+
+websocket:
+  port: 8399
+  action: chat
+  thread:
+    boss: 12
+    work: 12
 
 
 

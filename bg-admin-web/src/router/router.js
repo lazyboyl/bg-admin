@@ -128,6 +128,19 @@ export default [
         component: resolve => {
           require(['../view/sys/behavior/behaviorList.vue'], resolve);
         }
+      },
+      {
+        path: 'chatMain',
+        name: 'chatMain',
+        meta: {
+          icon: 'ios-paper',
+          title: '在线聊天',
+          code: 'system-manage-chatMain',
+          requireAuth: true //表示当前响应的请求是否需要进行登录拦截验证【true：需要；false：不需要】
+        },
+        component: resolve => {
+          require(['../components/chat/ChatMain.vue'], resolve);
+        }
       }
     ]
   }

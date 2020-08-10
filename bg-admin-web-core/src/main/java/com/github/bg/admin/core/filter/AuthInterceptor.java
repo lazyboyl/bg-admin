@@ -17,6 +17,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 /**
  * @author linzf
@@ -50,6 +51,11 @@ public class AuthInterceptor implements HandlerInterceptor {
         String token = httpServletRequest.getHeader("x-access-token");
         String actionUrl = httpServletRequest.getServletPath();
         if (SystemStaticConst.ACTION_TYPE_OPTIONS.equals(httpServletRequest.getMethod())) {
+            return true;
+        }
+        String jsPattern = ".*.js";
+        String cssPattern = ".*.css";
+        if(Pattern.matches(jsPattern, actionUrl)||Pattern.matches(cssPattern, actionUrl)){
             return true;
         }
         BehaviorLog behaviorLog = new BehaviorLog();
