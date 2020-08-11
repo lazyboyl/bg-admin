@@ -6,7 +6,7 @@ export const getFriendGroupList = params => {
 };
 
 // 查询用户消息
-export const loadMoreMessage = params => {
+export const loadUserMoreMessage = params => {
   return fetch('/friend/loadMoreMessage',params);
 };
 

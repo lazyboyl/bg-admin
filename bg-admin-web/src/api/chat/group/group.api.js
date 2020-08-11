@@ -1,7 +1,7 @@
 import {fetch} from '../../base';
 
 // 查询群消息
-export const loadMoreMessage = params => {
+export const loadGroupMoreMessage = params => {
   return fetch('/group/loadMoreMessage', params);
 };
 
