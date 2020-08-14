@@ -7,6 +7,7 @@ export default {
     loginAccount: localStorage.getItem('loginAccount') ? localStorage.getItem('loginAccount') : '',
     nickName: localStorage.getItem('nickName') ? localStorage.getItem('nickName') : '',
     token: localStorage.getItem('token') ? localStorage.getItem('token') : '',
+    refreshToken: localStorage.getItem('refreshToken') ? localStorage.getItem('refreshToken') : '',
     headImg: localStorage.getItem('headImg') ? localStorage.getItem('headImg') : '',
     userId: localStorage.getItem('userId') ? localStorage.getItem('userId') : '',
     menuList: [],// 右侧的显示的菜单栏的数据

@@ -2,7 +2,7 @@
   <div class="layout">
     <Layout>
       <Sider hide-trigger :style="{background: '#fff'}" width="260">
-        <Tabs style="min-height: 300px;">
+        <Tabs style="min-height: 494px;">
           <TabPane label="消息" icon="logo-apple">
             <List size="small">
               <ListItem>
@@ -38,10 +38,21 @@
             <div>
               <Button type="text" size="small">好友</Button>
               <Button type="text" size="small">群聊</Button>
-              <Button type="text" size="small" style="float: right;" icon="md-add"></Button>
+              <Poptip :transfer=true style="float: right;" placement="bottom-end">
+                <Button type="text" size="small" icon="md-add"></Button>
+                <ul class="ivu-dropdown-menu" slot="content">
+                  <li class="ivu-dropdown-item" @click="addFriendShow">添加好友</li>
+                  <li class="ivu-dropdown-item ivu-dropdown-item-divided" @click="addGroupShow">创建群组</li>
+                </ul>
+              </Poptip>
             </div>
             <div style="margin-top: 5px;margin-left: 5px;">
-              <Tree :data="friendData" @on-select-change="talkShow"></Tree>
+              <Tree :data="friendData" @on-select-change="talkShow" @on-contextmenu="handleContextMenu">
+                <template slot="contextMenu">
+                  <DropdownItem @click.native="addUserGroupShow">新增分组</DropdownItem>
+                  <DropdownItem @click.native="deleteUserGroup" style="color: #ed4014">删除分组</DropdownItem>
+                </template>
+              </Tree>
             </div>
           </TabPane>
         </Tabs>
@@ -60,8 +71,7 @@
                                 avatar="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar">
                   </ChatListItem>
                 </List>
-                <span :id="'msg_end_' + tp.userId"
-                      style="text-align: center;height:80px;display: block;overflow:hidden"></span>
+                <span :id="'msg_end_' + tp.userId" style="overflow:hidden"></span>
               </Scroll>
             </Content>
             <div>
@@ -82,21 +92,28 @@
         </TabPane>
       </Tabs>
     </Layout>
+    <addFriendGroup v-model="addFriendGroupShow" v-on:operateFriendData="operateFriendData"></addFriendGroup>
   </div>
 </template>
 
 <script>
     import ChatListItem from '@/components/chat/chatList/ChatListItem'
-    import {myFriendList} from '@/api/chat/friend/friend.api';
+    import addFriendGroup from "@/components/chat/friendGroup/addFriendGroup";
+    import {myFriendList, deleteFriendGroup} from '@/api/chat/friend/friend.api';
 
     export default {
         name: 'chatMain',
-        components: {ChatListItem},
+        components: {
+            ChatListItem,
+            addFriendGroup
+        },
         data() {
             return {
+                addFriendGroupShow: false,
                 nowChatUser: '',
                 chatTabPane: [],
                 friendData: [],
+                rightClickData: {},
                 wsuri: 'ws://127.0.0.1:8399/chat'
             }
         },
@@ -105,8 +122,63 @@
             this.initFriendGroup()
         },
         methods: {
+            operateFriendData(data) {
+                console.log(data)
+                this.friendData.push({
+                    title: data.friendGroupName,
+                    expand: false,
+                    contextmenu: true,
+                    allowDeletion: data.allowDeletion,
+                    friendGroupId: data.friendGroupId,
+                    children: []
+                })
+            },
+            deleteUserGroup() {
+                if (this.rightClickData.allowDeletion === '9') {
+                    this.$Message.warning('根好友分组不允许删除！');
+                    return false
+                }
+                this.$Modal.confirm({
+                    title: '提示',
+                    content: '<p>是否删除【' + this.rightClickData.title + '】好友分组</p>',
+                    onOk: () => {
+                        deleteFriendGroup({friendGroupId: this.rightClickData.friendGroupId}).then(res => {
+                            if (res.code == 200) {
+                                this.$Message.success(res.msg);
+                                for (let i = 0; i < this.friendData.length; i++) {
+                                    if (this.friendData[i].friendGroupId === this.rightClickData.friendGroupId) {
+                                        for (let j = 0; j < this.friendData[i].children.length; j++) {
+                                            this.friendData[0].children.push(this.friendData[i].children[j])
+                                        }
+                                        this.friendData.splice(i, 1)
+                                        break
+                                    }
+                                }
+                            } else {
+                                this.$Message.error(res.msg);
+                            }
+                        })
+                    },
+                    onCancel: () => {
+                        this.$Message.info('取消了删除');
+                    }
+                })
+            },
+            addUserGroupShow() {
+                this.addFriendGroupShow = true
+            },
+            handleContextMenu(data) {
+                this.rightClickData = data;
+            },
+            addGroupShow() {
+                console.log('addGroupShow')
+            },
+            addFriendShow() {
+                console.log('addFriendShow')
+            },
             sendMsg(tp) {
-                let actions = {'url': '/chat/sendMessage/',
+                let actions = {
+                    'url': '/chat/sendMessage/',
                     'params': {
                         'token': this.$store.getters.token,
                         'messageContent': tp.messageContent,
@@ -122,12 +194,12 @@
                     talkSide: true
                 })
                 tp.messageContent = ''
-                document.getElementById('msg_end_' + tp.userId).scrollIntoView(false)
+                this.scrollTalkContent(tp.userId)
             },
             removeChatUser(userId) {
                 for (let i = 0; i < this.chatTabPane.length; i++) {
                     if (this.chatTabPane[i].userId === userId) {
-                        this.chatTabPane[i].isShow = false
+                        this.chatTabPane.splice(i, 1)
                     }
                 }
             },
@@ -139,9 +211,8 @@
                     }
                     for (let i = 0; i < this.chatTabPane.length; i++) {
                         if (this.chatTabPane[i].userId === data[0].userId) {
-                            this.chatTabPane[i].isShow = true
                             this.nowChatUser = data[0].userId
-                            return false;
+                            return false
                         }
                     }
                     this.chatTabPane.push({
@@ -165,18 +236,21 @@
                             let obj = {
                                 title: res.obj[i].friendGroupName,
                                 expand: false,
+                                contextmenu: true,
                                 allowDeletion: res.obj[i].allowDeletion,
                                 friendGroupId: res.obj[i].friendGroupId,
                                 children: []
                             }
                             if (res.obj[i].friendLists != undefined && res.obj[i].friendLists.length > 0) {
                                 for (let j = 0; j < res.obj[i].friendLists.length; j++) {
-                                    obj.children.push({
-                                        title: res.obj[i].friendLists[j].nickName,
-                                        userId: res.obj[i].friendLists[j].userId,
-                                        friendState: res.obj[i].friendLists[j].friendState,
-                                        belowUserId: res.obj[i].friendLists[j].belowUserId
-                                    });
+                                    if(res.obj[i].friendLists[j].nickName !== null){
+                                        obj.children.push({
+                                            title: res.obj[i].friendLists[j].nickName,
+                                            userId: res.obj[i].friendLists[j].userId,
+                                            friendState: res.obj[i].friendLists[j].friendState,
+                                            belowUserId: res.obj[i].friendLists[j].belowUserId
+                                        });
+                                    }
                                 }
                             }
                             myFriendData.push(obj);
@@ -217,7 +291,7 @@
                                 messageContent: data.messageContent,
                                 talkSide: false
                             })
-                            document.getElementById('msg_end_' + data.sendUserId).scrollIntoView(false)
+                            this.scrollTalkContent(data.sendUserId)
                         }
                     }
 
@@ -242,6 +316,13 @@
                         }, 1000)
                     }, 1000)
                 }
+            },
+            scrollTalkContent(userId) {
+                this.$nextTick(() => {
+                    setTimeout(() => {
+                        document.getElementById('msg_end_' + userId).scrollIntoView(false)
+                    }, 13)
+                })
             }
         }
     }
